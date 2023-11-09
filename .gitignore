@@ -1,0 +1,39 @@
+# 忽略操作系统生成的文件
+.DS_Store
+Thumbs.db
+
+# 忽略 Node.js 生成的文件夹
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# 忽略本地配置文件（例如，配置文件包含敏感信息）
+config.js
+.env
+
+# 忽略依赖管理文件（可以用于避免冲突）
+package-lock.json
+yarn.lock
+
+# 忽略构建输出和临时文件
+dist/
+build/
+.tmp/
+.cache/
+
+# 忽略日志文件
+logs/
+*.log
+npm-debug.log*
+
+# 忽略测试结果
+coverage/
+
+# 忽略编辑器生成的文件
+.vscode/
+.idea/
+*.swp
+
+# 忽略自动生成的文档和注释
+docs/
+*.html

@@ -1,0 +1,13 @@
+{
+  "name": "cocos-creator-extensions",
+  "version": "1.0.0",
+  "description": "Store some Creator extension plugins",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "build": "",
+    "test": "node --test ./test",
+    "ci": "npm install && npm run build && npm run test"
+  },
+  "author": "",
+  "license": "ISC"
+}

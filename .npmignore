@@ -1,0 +1,8 @@
+# 使用 .gitignore 中的规则排除不需要包含在 npm 包中的文件
+/source
+/test
+/script
+
+# 如果需要在 npm 包中包含特定文件，请在下面取消注释并添加文件路径
+!/build
+!/dist
