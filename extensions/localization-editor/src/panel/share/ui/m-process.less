@@ -1,0 +1,18 @@
+div.mProcess {
+    height: 4px;
+    background-color: @weak-gray-color;
+    border-radius: 12px;
+    & > div.content {
+        height: 100%;
+        border-radius: 12px;
+        &[color="pink"] {
+            background-color: @pink-color;
+        }
+        &[color="blue"] {
+            background-color: @blue-color;
+        }
+        &[color="yellow"] {
+            background-color: @yellow-color;
+        }
+    }
+}

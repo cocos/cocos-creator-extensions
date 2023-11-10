@@ -1,0 +1,6 @@
+@types
+/*.json
+*.config.ts
+*.setup.ts
+dist
+panel-dist

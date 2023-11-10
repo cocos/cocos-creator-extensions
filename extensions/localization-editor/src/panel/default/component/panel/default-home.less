@@ -1,0 +1,336 @@
+div.home {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: @dark-color;
+    overflow-y: auto;
+    overflow-x: auto;
+
+    ui-input {
+        line-height: 20px;
+    }
+
+    &>.body {
+        display: flex;
+        margin: auto;
+
+        ui-select {
+            line-height: 20px;
+        }
+
+        @import url('../../../share/less/ui-label.less');
+
+        ui-label {
+            white-space: nowrap;
+        }
+
+        .mProcess {
+            width: 200px;
+        }
+
+        m-section {
+            &> :not(*[slot='header']) {
+                margin-top: -10px;
+            }
+        }
+
+        * {
+            &.ball {
+                height: 7px;
+                width: 7px;
+                border-radius: 50%;
+                background-color: @white-color;
+
+                &.shadow {
+                    box-shadow: 1px 0 4px 0 rgba(255, 255, 255, 0.8);
+                }
+            }
+
+            // 横向布局的容器
+            &.container {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding-top: 2px;
+                padding-bottom: 2px;
+
+                &>.mFile {
+                    flex: 1;
+                    &>.label {
+                        &>span.parent {
+                            display: flex;
+                            justify-content: space-between;
+                        }
+                    }
+                }
+            }
+
+            // 灰色背景
+            &.gray {
+                border-radius: 2px;
+                background-color: @strong-gray-color;
+                padding: 16px;
+            }
+
+            // 线框
+            &.frame {
+                padding: 10px 16px;
+                border: 1px solid @gray-color;
+
+                &:hover {
+                    border-color: @weak-gray-color;
+                }
+
+                &.mSection {
+                    padding: 8px 16px;
+                }
+            }
+        }
+        &>div.mask {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+
+            &> div {
+                margin-left: auto;
+                margin-right: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                &> ui-label {
+                    margin-bottom: 20px;
+                    line-height: 22px;
+                    font-size: 14px;
+                    font-weight: 400;
+                    color: @white-color;
+                    display: block;
+                    font-family: "Source Han Sans CN";
+                }
+                &> ui-button{
+                    padding-top: 4px 24px 4px 24px; 
+                    border-radius: 4px;
+
+                    &> ui-label {
+                        font-weight: 400;
+                        font-size: 12px;
+                        font-family: "PingFang SC";
+                        text-align: center;
+                        line-height: 20px;
+                    }
+                }
+            }
+        }
+        &>div.main {
+
+            &>div.title {
+                display: flex;
+                align-items: center;
+                margin-bottom: 36px;
+                margin-top: 32px;
+
+                &>ui-label {
+                    font-family: @ping-fang-font;
+                    text-align: left;
+                    font-size: 20px;
+                    font-weight: 700;
+                    line-height: 26px;
+                    letter-spacing: 2px;
+                }
+            }
+
+            left: 0px;
+            right: 0px;
+            margin-left: auto;
+            margin-right: auto;
+            div.container {
+                min-height: 24px;
+
+                &>*:not(:last-child) {
+                    margin-right: 8px;
+                }
+            }
+
+            &>div {
+                &.container {
+                    &>div.ball {
+                        margin-right: 8px;
+                    }
+                }
+
+                &.gray {
+
+                    div.container {
+                        &>.left {
+                            min-width: 70px;
+                        }
+                    }
+
+                    &.service {
+                        padding: 16px;
+                        margin-top: 8px;
+                        margin-bottom: 32px;
+
+                        &>div.container {
+                            &>.left {
+                                &>ui-label {
+                                    margin: 0;
+                                }
+                            }
+
+                            &>.mInput {
+                                width: 360px;
+                                height: 20px;
+                                line-height: 20px;
+                            }
+
+                            &>ui-select {
+                                width: 262px;
+                            }
+                        }
+
+                        &>div.footer {
+                            display: flex;
+                            flex-direction: row-reverse;
+                        }
+                    }
+
+                    &.collect {
+                        margin-top: 8px;
+                        margin-bottom: 32px;
+
+                        &>div.mSection {
+                            &>.header {
+                                &:hover {
+                                    &>.mIcon {
+                                        visibility: visible;
+                                    }
+                                }
+
+                                &>.mIcon {
+                                    visibility: hidden;
+                                }
+                            }
+                        }
+
+                        &>div.mSection:first {
+                            margin-top: 4px;
+                        }
+
+                        div.content>.mSection {
+                            margin-top: 4px;
+
+                            &>.header {
+                                &>ui-button {
+                                    padding: 0px;
+                                }
+
+                            }
+
+                            &>.content {
+                                &>div.container {
+                                    height: 24px;
+                                    position: relative;
+                                    padding-left: 6px;
+
+                                    &>.mFile {
+                                        &>ui-prop {
+                                            &>.mIcon {
+                                                position: absolute;
+                                                top: 0px;
+                                                left: -15px;
+                                            }
+                                        }
+                                    }
+
+                                    &:hover,
+                                    :focus-within {
+                                        &>.mIcon {
+                                            visibility: visible;
+                                        }
+                                    }
+
+                                    &>.mIcon {
+                                        visibility: hidden;
+                                    }
+                                }
+                            }
+                        }
+
+                        &>div.container {
+                            &>ui-select {
+                                width: 243px;
+                            }
+                        }
+                    }
+
+                    &.language {
+                        margin-top: 8px;
+                        margin-bottom: 300px;
+
+                        &>div.container {
+                            &>ui-select {
+                                width: 258px;
+                            }
+                        }
+
+                        &>table {
+                            width: 100%;
+                        }
+
+                        &>table,
+                        &>table>tr,
+                        &>table>tr>td,
+                        &>table>tr>th {
+                            border: 1px solid @gray-color;
+                            border-collapse: collapse;
+
+                            ui-select {
+                                min-width: 140px;
+                            }
+                        }
+
+                        // 表头
+                        &>table>tr>th {
+                            padding-left: 16px;
+                            padding-right: 16px;
+                            text-align: left;
+                            height: 30px;
+                        }
+
+                        &>table>tr>td {
+                            width: 198px;
+                            padding: 8px 16px;
+
+                            &:last-child {
+                                padding-left: 4px;
+                                white-space: nowrap;
+            
+                                &>ui-button {
+                                    padding-left: 12px;
+                                    padding-right: 12px;
+                                }
+                            }
+
+                            &>div>.mProcess {
+                                width: 88px;
+                            }
+
+                            &>ui-select {
+                                margin-top: 8px;
+                            }
+
+                            &>.mButton {
+                                width: 36px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

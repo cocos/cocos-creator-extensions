@@ -1,0 +1,32 @@
+div.mIcon {
+    user-select: none;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    color: @bit-weak-white-color;
+    border: 1px solid;
+    width: 16px;
+    height: 16px;
+    &:hover {
+        background-color: @weak-gray-color;
+        border-color: @weak-gray-color;
+        cursor: pointer;
+    }
+    &:active {
+        background-color: @weaker-white-color;
+        border-color: @weaker-white-color;
+        cursor: pointer;
+    }
+    &[disabled="true"] {
+        background-color: @strong-gray-color;
+        color: @weak-gray-color;
+    }
+    &[background="false"] {
+        background-color: transparent;
+    }
+    &[border="false"] {
+        border-color: transparent;
+    }
+}

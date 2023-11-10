@@ -1,0 +1,41 @@
+div.mask {
+    z-index: 999;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+
+    &> div {
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &> ui-label {
+            margin-bottom: 20px;
+            line-height: 22px;
+            font-size: 14px;
+            font-weight: 400;
+            color: @white-color;
+            display: block;
+            font-family: "Source Han Sans CN";
+        }
+        &> ui-button{
+            padding-top: 4px 24px 4px 24px; 
+            border-radius: 4px;
+
+            &> ui-label {
+                font-weight: 400;
+                font-size: 12px;
+                font-family: "PingFang SC";
+                text-align: center;
+                line-height: 24px;
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "types": [
+            "@types"
+        ]
+    },
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "*.config.ts",
+        "resources",
+//        "src/assets"
+    ]
+}

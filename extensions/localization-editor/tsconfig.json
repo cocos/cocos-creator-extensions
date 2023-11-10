@@ -1,0 +1,68 @@
+{
+    "extends": "../../app/base.tsconfig.json",
+    "compilerOptions": {
+        "target": "ES2017",
+        "module": "CommonJS",
+        "lib": [
+            "DOM",
+            "ES5",
+            "ES6",
+            "ES7",
+            "ES2015",
+            "ES2016",
+            "ES2017",
+            "ES2018",
+            "ES2019",
+            "ES2020",
+            "ES2021",
+            "ESNext"
+        ],
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "strict": true,
+        "sourceMap": false,
+        "inlineSources": false,
+        "inlineSourceMap": false,
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "typeRoots": [
+            ".",
+            "node_modules",
+            "node_modules/@types",
+            "@types",
+            "src",
+            "tests"
+        ],
+        "types": [
+            "node",
+            "webpack/module",
+            "vue",
+            "gettext-parser",
+            "jest",
+            "@types/jest",
+            "../../app/modules/cc",
+            "@editor/library-type/protected"
+        ]
+    },
+    "include": [
+        "src",
+        "@types",
+    ],
+    "exclude": [
+        "tests"
+    ],
+    "ts-node": {
+        "compilerOptions": {
+            "experimentalDecorators": true,
+            "emitDecoratorMetadata": true,
+            "typeRoots": [
+                "./@types"
+            ]
+        }
+    }
+}

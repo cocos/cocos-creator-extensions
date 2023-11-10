@@ -1,0 +1,87 @@
+@import url('../../share/less/index.less');
+.i18nComponent {
+    position: relative;
+    text-align: center;
+
+    *.container {
+        display: flex;
+        align-items: center;
+    }
+
+    ui-prop#keyProp {
+        & > [slot='content'] {
+            display: flex;
+
+            & > .mInput {
+                flex: 1;
+                margin-right: 8px;
+            }
+        }
+
+        & > .btn-edit-group {
+            margin-top: 4px;
+
+            & > .btn-edit-content {
+                display: flex;
+
+                & > ui-button {
+                    width: 70px;
+                    height: 24px;
+                }
+            }
+        }
+
+    }
+
+    .margin-top-4 {
+        margin-top: 4px;
+    }
+
+    .margin-left-4 {
+        margin-left: 4px;
+    }
+
+    div.search {
+        position: absolute;
+        width: 80%;
+        right: 0%;
+        bottom: 26px;
+        background-color: @gray-color;
+        margin-top: 4px;
+        padding: 6px 4px;
+        border-radius: 4px;
+        border: 1px solid @weak-gray-color;
+        background: @weak-dark-color;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+        z-index: 2;
+
+        & > .mInput {
+            margin-bottom: 8px;
+        }
+
+        & > .scroll-container {
+            & > .virtual-list {
+                & > ui-prop.item {
+                    padding: 6px;
+                    margin-top: 0px;
+                    border-bottom: solid 1px @gray-color;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: @gray-color;
+                    }
+
+                    &[select=true] {
+                        background-color: @selected-color;
+                    }
+
+                    & > div {
+                        & > ui-label {
+                            margin-right: 8px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

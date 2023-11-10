@@ -1,0 +1,93 @@
+div.mInput {
+    background-color: @dark-color;
+    min-height: 16px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    padding: 2px 4px;
+    cursor: text;
+    color: @white-color;
+
+    &[disabled="true"] {
+        color: @bit-weak-white-color;
+        pointer-events: none;
+    }
+
+    &[noVerticalPadding] {
+        padding: 0px 4px;
+    }
+
+    &:hover {
+        border-color: @black-blue-color;
+    }
+
+    &:focus-within {
+        background-color: @dark-color ;
+        border-color: @blue-color;
+    }
+
+    &[readonly] {
+        background-color: transparent;
+    }
+
+    &>ui-label,
+    &>input {
+        text-overflow: ellipsis;
+    }
+
+    &>input,
+    &>textarea {
+        overflow: hidden;
+        flex: 1;
+        background: none;
+        border: none;
+        outline: none;
+        line-height: 16px;
+        font-size: 12px;
+        width: 0px;
+        font-weight: 400;
+        font-family: @ping-fang-font;
+        caret-color: @white-color;
+        resize: none;
+        color: inherit;
+
+        &::selection {
+            background-color: rgba(63, 170, 201, 1);
+        }
+
+        &[type="number"] {
+
+            &::-webkit-outer-spin-button,
+            &::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+            }
+
+            -moz-appearance: textfield;
+        }
+    }
+
+    &>textarea {
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+    &>ui-label {
+        line-height: 16px;
+        color: @white-color;
+    }
+
+    &.focus {
+        border-color: #227f9b;
+    }
+
+    &>.icon {
+        line-height: 16px;
+        height: 16px;
+        min-width: 0px;
+    }
+
+    &[error="true"] {
+        border-color: @red-color;
+    }
+}

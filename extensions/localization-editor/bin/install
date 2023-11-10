@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+#rm -rf node_modules
+npm clean-install --ignore-scripts "$1"

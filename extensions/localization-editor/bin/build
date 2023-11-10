@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+rm -rf @types/runtime
+cd static || exit
+npx tsc -b
+cd ..
+rm -rf dist
+rm -rf panel-dist
+npx tsc -b --verbose
+npx vite build --mode "$1"
