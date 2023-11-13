@@ -4,10 +4,16 @@
   "description": "Store some Creator extension plugins",
   "main": ".eslintrc.js",
   "scripts": {
-    "build": "",
-    "test": "node --test ./test",
-    "ci": "npm install && npm run build && npm run test"
+    "postinstall": "node ./workflow/scripts/postinstall.js",
+    "build": "node ./workflow/scripts/build.js",
+    "publish": "node ./workflow/scripts/publish.js",
+    "pack": "node ./workflow/scripts/pack.js",
+    "test": "node ./workflow/scripts/test.js",
+    "ci": "npm run test"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.4.2"
+  }
 }
