@@ -1,5 +1,5 @@
 /* eslint-disable semi */
-import { AssetInfo } from '@editor/library-type/packages/asset-db/@types/public';
+import { AssetInfo } from '@cocos/creator-types/editor/packages/asset-db/@types/public';
 import ITranslateProviderConfig, { SupportedTranslateProvider } from '../core/entity/config/ITranslateProviderConfig';
 import IScanOption from '../core/entity/messages/IScanOption';
 import IAssociation from '../core/entity/translate/IAssociation';

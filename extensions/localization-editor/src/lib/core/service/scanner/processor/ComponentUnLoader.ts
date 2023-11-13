@@ -1,7 +1,7 @@
 import { Scene, Prefab, Asset, SceneAsset, CCObject, Node } from 'cc';
 import { autoInjectable } from 'tsyringe';
 import AssetSerializeService from '../serialize/AssetSerializeService';
-import { AssetInfo } from '@editor/library-type/packages/asset-db/@types/public';
+import { AssetInfo } from '@cocos/creator-types/editor/packages/asset-db/@types/public';
 import SceneProcessor from './SceneProcessor';
 
 @autoInjectable()

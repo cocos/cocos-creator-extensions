@@ -30,7 +30,7 @@ import TranslateFileService from '../core/service/external-translate/TranslateFi
 import { CustomError } from '../core/error/Errors';
 import { MessageCode } from '../core/entity/messages/MainMessage';
 import { MainName } from '../core/service/util/global';
-import { IBuildTaskItemJSON } from '@editor/library-type/packages/builder/@types/public';
+import { IBuildTaskItemJSON } from '@cocos/creator-types/editor/packages/builder/@types/public';
 import TrackService from '../core/service/track/track-service';
 
 /**

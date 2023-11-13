@@ -7,6 +7,7 @@
     "author": "Cocos Creator",
     "editor": ">=3.7.0",
     "scripts": {
+        "preinstall": "cd runtime-node-modules && npm install && cd ..",
         "build": "npx webpack --node-env production",
         "build:dev": "npx webpack --node-env development",
         "build:prod": "npx webpack --node-env production",
@@ -21,11 +22,12 @@
         "intl-pluralrules": "^1.3.1"
     },
     "devDependencies": {
-        "@editor/library-type": "3.8.0-040611",
+        "@cocos/creator-types": "^3.8.1",
         "@electron/remote": "^1.2.2",
         "@jest/types": "^28.1.3",
         "@swc/core": "^1.2.223",
         "@swc/jest": "^0.2.22",
+        "@types/adm-zip": "^0.5.0",
         "@types/crypto-js": "^4.1.1",
         "@types/express": "^4.17.13",
         "@types/fs-extra": "^9.0.5",
@@ -34,6 +36,7 @@
         "@types/js-yaml": "^4.0.5",
         "@types/lodash": "^4.14.182",
         "@types/webpack-node-externals": "^2.5.3",
+        "adm-zip": "^0.5.9",
         "axios": "^0.27.2",
         "crypto-js": "^4.1.1",
         "csv": "^6.2.0",

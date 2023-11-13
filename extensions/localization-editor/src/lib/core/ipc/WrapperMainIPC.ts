@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { AssetInfo } from '@editor/library-type/packages/asset-db/@types/public';
+import { AssetInfo } from '@cocos/creator-types/editor/packages/asset-db/@types/public';
 import { singleton } from 'tsyringe';
 import IMainThread from '../../main/IMainThread';
 import IWrapperMainThread from '../../main/IWrapperMainThread';

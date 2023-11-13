@@ -1,5 +1,5 @@
 import { singleton } from 'tsyringe';
-import { IBuildTaskItemJSON } from '@editor/library-type/packages/builder/@types/public';
+import { IBuildTaskItemJSON } from '@cocos/creator-types/editor/packages/builder/@types/public';
 import { MainName } from '../util/global';
 import ILocalizationEditorOptions from '../../../builder/ILocalizationEditorOptions';
 import TranslateDataSourceService from '../persistent/TranslateDataSourceService';
@@ -30,6 +30,7 @@ export default class TrackService {
                 const value: {[key: string]: number} = {
                 };
                 value[TrackService.BUILD_SUCCESS_WITH_L10N] = 1;
+                // @ts-ignore
                 Editor.Metrics.trackEvent({
                     sendToNewCocosAnalyticsOnly: true,
                     category: TrackService.EVENT_ID,
@@ -41,15 +42,16 @@ export default class TrackService {
                 } catch (error) {
                     // 都加载不到 index-data 了，尝试一次读取配置文件再继续
                     await this.translateDataSourceService.read();
-                    indexData = this.translateDataSourceService.getClonedIndexData();    
+                    indexData = this.translateDataSourceService.getClonedIndexData();
                 }
                 const languages = this.translateDataSourceService.getAllLanguageTags();
-                
+
                 const allKeys = Array.from(indexData.items.keys());
                 if (allKeys.length > 0 && languages.length >= 2) {
                     Object.keys(option.targetLanguageMap!).forEach(language => {
                         const value: {[key: string]: number} = {};
                         value[TrackService.BUILD_SUCCESS_FOR_LANGUAGE(language)] = allKeys.length;
+                        // @ts-ignore
                         Editor.Metrics.trackEvent({
                             sendToNewCocosAnalyticsOnly: true,
                             category: TrackService.EVENT_ID,

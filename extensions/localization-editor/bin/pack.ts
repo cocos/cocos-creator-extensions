@@ -30,6 +30,7 @@ for (let index = 0; index < files.length; index++) {
 
 // get everything as a buffer
 // or write everything to disk
-zip.writeZip(join(__dirname, '../localization-editor.zip'));
+// npm run pack ./dist -> the third parameter is the location of the zip output
+zip.writeZip(process.argv[2] ? join(process.argv[2], 'localization-editor.zip') : join(__dirname, '../localization-editor.zip'));
 
 // ... more examples in the wiki

@@ -1,5 +1,5 @@
 /* eslint-disable semi */
-import { AssetInfo } from '@editor/library-type/packages/asset-db/@types/public';
+import { AssetInfo } from '@cocos/creator-types/editor/packages/asset-db/@types/public';
 import { TranslateItemArray, TranslateItemValue } from '../../../type/type';
 import TranslateItem from '../../../entity/translate/TranslateItem';
 

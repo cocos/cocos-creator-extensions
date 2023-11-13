@@ -8,7 +8,8 @@ import IPolyFillInfo from './IPolyfillInfo';
 import { ITaskOptions } from './ITaskOptions';
 import builder from './builder';
 import WrapperMainIPC from '../core/ipc/WrapperMainIPC';
-import { BuilderAssetCache, InternalBuildResult, IBuilder, IBundle } from '@editor/library-type/packages/builder/@types/protected';
+import { BuilderAssetCache, InternalBuildResult, IBundle } from './internal';
+import IBuilder from './IBuilder';
 import IWrapperTranslateItem from '../core/entity/translate/IWrapperTranslateItem';
 import MainIPC from '../core/ipc/MainIPC';
 import type { ResourceList } from '../../../@types/runtime/l10n';
@@ -77,6 +78,7 @@ async function initOptions(options: ITaskOptions) {
  * 在这个方法中为默认的资源增加引用
  * @param options
  * @param result
+ * @param cache
  */
 export async function onAfterInit(options: ITaskOptions, result: InternalBuildResult, cache: BuilderAssetCache) {
     if (!await mainIPC.getEnable()) {

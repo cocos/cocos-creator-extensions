@@ -1,11 +1,11 @@
 /* eslint-disable prefer-rest-params */
-import { AssetInfo, QueryAssetsOption } from '@editor/library-type/packages/asset-db/@types/public.d';
+import { AssetInfo, QueryAssetsOption } from '@cocos/creator-types/editor/packages/asset-db/@types/public';
 import { singleton } from 'tsyringe';
 import { MainName } from './util/global';
 
 @singleton()
 export default class EditorMessageService {
-    
+
     async refreshPreview(): Promise<void> {
         return (await Editor.Message.request('preview', 'reload-terminal')) as void;
     }

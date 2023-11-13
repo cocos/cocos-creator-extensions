@@ -1,7 +1,7 @@
 import { Scene, Prefab, Asset, SceneAsset, Node, Label, instantiate } from 'cc';
 import { autoInjectable } from 'tsyringe';
 import IProcessor from './IProcessor';
-import { AssetInfo } from '@editor/library-type/packages/asset-db/@types/public.d';
+import { AssetInfo } from '@cocos/creator-types/editor/packages/asset-db/@types/public';
 import AssetSerializeService from '../serialize/AssetSerializeService';
 import TranslateItem from '../../../entity/translate/TranslateItem';
 import Association from '../../../entity/translate/Association';

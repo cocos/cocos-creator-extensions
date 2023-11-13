@@ -5,7 +5,7 @@ import ITranslateItem from './ITranslateItem';
 import IWrapperTranslateItem from './IWrapperTranslateItem';
 import TranslateItemType from './TranslateItemType';
 import { ProjectAssetPath } from '../../service/util/global';
-import { AssetInfo } from '@editor/library-type/packages/asset-db/@types/public';
+import { AssetInfo } from '@cocos/creator-types/editor/packages/asset-db/@types/public';
 import IWrapperAssociation from './IWrapperAssociation';
 
 export default class WrapperTranslateItem implements IWrapperTranslateItem {

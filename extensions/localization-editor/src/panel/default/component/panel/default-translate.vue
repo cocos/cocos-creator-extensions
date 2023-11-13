@@ -485,7 +485,7 @@ import MButton from '../../../share/ui/m-button.vue';
 import MInput from '../../../share/ui/m-input.vue';
 import WrapperTranslateItem from '../../../../lib/core/entity/translate/WrapperTranslateItem';
 import Iterator from '../../../share/scripts/Iterator';
-import { AssetInfo } from '@editor/library-type/packages/asset-db/@types/public';
+import { AssetInfo } from '@cocos/creator-types/editor/packages/asset-db/@types/public';
 import IAssociation from '../../../../lib/core/entity/translate/IAssociation';
 import IWrapperTranslateItem from '../../../../lib/core/entity/translate/IWrapperTranslateItem';
 import TranslateItemType from '../../../../lib/core/entity/translate/TranslateItemType';

@@ -2,7 +2,7 @@ import { basename, join } from 'path';
 import 'reflect-metadata';
 import { existsSync, readdir } from 'fs-extra';
 import { container, singleton } from 'tsyringe';
-import { IInternalBuildPluginConfig } from '@editor/library-type/packages/builder/@types/protected';
+import { IInternalBuildPluginConfig } from './internal';
 import { MainName, resourceBundlePath, resourceListPath, RuntimeBundleName } from '../core/service/util/global';
 import IBuilder from './IBuilder';
 import EditorMessageService from '../core/service/EditorMessageService';

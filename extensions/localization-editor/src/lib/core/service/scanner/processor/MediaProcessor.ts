@@ -1,7 +1,7 @@
 import { autoInjectable } from 'tsyringe';
 import IProcessor from './IProcessor';
 import TranslateItem from '../../../entity/translate/TranslateItem';
-import { AssetInfo } from '@editor/library-type/packages/asset-db/@types/public';
+import { AssetInfo } from '@cocos/creator-types/editor/packages/asset-db/@types/public';
 import TranslateItemType from '../../../entity/translate/TranslateItemType';
 import { TranslateItemArray, TranslateItemValue } from '../../../type/type';
 import Association from '../../../entity/translate/Association';

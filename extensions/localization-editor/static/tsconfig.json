@@ -25,9 +25,8 @@
         "typeRoots": ["../@types"],
         "types": [
             "intl",
-            "../../../@types/cc",
-            "../../../@types/editor",
-            "@editor/library-type"
+            "@cocos/creator-types/editor",
+            "@cocos/creator-types/engine"
         ],
     },
     "exclude": [

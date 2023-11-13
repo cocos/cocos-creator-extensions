@@ -1,5 +1,5 @@
 {
-    "extends": "../../app/base.tsconfig.json",
+    "$schema": "https://schemastore.azurewebsites.net/schemas/json/tsconfig.json",
     "compilerOptions": {
         "target": "ES2017",
         "module": "CommonJS",
@@ -45,8 +45,8 @@
             "gettext-parser",
             "jest",
             "@types/jest",
-            "../../app/modules/cc",
-            "@editor/library-type/protected"
+            "@cocos/creator-types/editor",
+            "@cocos/creator-types/engine",
         ]
     },
     "include": [
