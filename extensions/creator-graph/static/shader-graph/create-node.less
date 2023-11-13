@@ -1,0 +1,47 @@
+.create-node {
+    box-shadow: rgb(63 63 63 / 30%) 0px 0px 10px 2px;
+
+    display: flex;
+
+    .header {
+        display: flex;
+        align-items: center;
+        background-color: #141414;
+        width: 100%;
+        height: 25px;
+    }
+
+    .title-label {
+        margin-left: 8px;
+    }
+
+    .close {
+        position: absolute;
+        right: 8px;
+        cursor: pointer;
+    }
+
+    .section {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        padding: 4px;
+    }
+
+    .search-group {
+        display: flex;
+        .icon {
+            margin-left: 4px;
+            margin-right: 4px;
+        }
+        .input {
+            flex: 1;
+            margin-right: 4px;
+        }
+    }
+
+    .menus {
+        height: 100%;
+    }
+}

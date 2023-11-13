@@ -1,0 +1,160 @@
+.float-window {
+  position: absolute;
+  pointer-events: auto;
+  background-color: #2B2B2B;
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  border-radius: 2px;
+
+  --point-width: 4px;
+  --point-height: 4px;
+  --point-position: absolute;
+  --point-background-color: #fffa00;
+  --point-cursor-tl: nwse-resize;
+  --point-cursor-lb: nesw-resize;
+
+  --line-width: 100%;
+  --line-width-4: 4px;
+  --line-height: 100%;
+  --line-height-4: 4px;
+  --line-position: absolute;
+  --line-opacity: 0;
+  --line-background-color: #7882ff;
+  --line-cursor-lr: ew-resize;
+  --line-cursor-tb: ns-resize;
+
+  &[hidden] {
+    display: none;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    background-color: #141414;
+    width: 100%;
+    height: 25px;
+
+    .hide-button {
+        position: absolute;
+        right: 5px;
+        color: #8F8F8F;
+        cursor: pointer;
+    }
+    .hide-button:hover {
+        color: #cccccc;
+    }
+
+    .title {
+      display: flex;
+      line-height: 25px;
+      height: 25px;
+      padding-left: 16px;
+      padding-right: 16px;
+      background-color: #2B2B2B;
+      justify-content: space-between;
+      color: #cccccc;
+    }
+  }
+
+  .top {
+    width: var(--line-width);
+    height: var(--line-height-4);
+    cursor: var(--line-cursor-tb);
+    position: var(--line-position);
+    background-color: var(--line-background-color);
+    opacity: var(--line-opacity);
+
+    top: 0;
+  }
+
+  .bottom {
+    width: var(--line-width);
+    height: var(--line-height-4);
+    cursor: var(--line-cursor-tb);
+    position: var(--line-position);
+    background-color: var(--line-background-color);
+    opacity: var(--line-opacity);
+
+    bottom: 0;
+  }
+
+  .left {
+    width: var(--line-width-4);
+    height: var(--line-height);
+    cursor: var(--line-cursor-lr);
+    position: var(--line-position);
+    background-color: var(--line-background-color);
+    opacity: var(--line-opacity);
+
+    left: 0;
+  }
+
+  .right {
+    width: var(--line-width-4);
+    height: var(--line-height);
+    cursor: var(--line-cursor-lr);
+    position: var(--line-position);
+    background-color: var(--line-background-color);
+    opacity: var(--line-opacity);
+
+    right: 0;
+  }
+
+  .top-left {
+    width: var(--point-width);
+    height: var(--point-height);
+    cursor: var(--point-cursor-tl);
+    position: var(--point-position);
+    background-color: var(--point-background-color);
+    opacity: var(--line-opacity);
+
+    top: 0;
+    left: 0;
+  }
+
+  .top-right {
+    width: var(--point-width);
+    height: var(--point-height);
+    cursor: var(--point-cursor-lb);
+    position: var(--point-position);
+    background-color: var(--point-background-color);
+    opacity: var(--line-opacity);
+
+    top: 0;
+    right: 0;
+  }
+
+  .bottom-left {
+    width: var(--point-width);
+    height: var(--point-height);
+    cursor: var(--point-cursor-lb);
+    position: var(--point-position);
+    background-color: var(--point-background-color);
+    opacity: var(--line-opacity);
+
+    bottom: 0;
+    left: 0;
+  }
+
+  .bottom-right {
+    width: var(--point-width);
+    height: var(--point-height);
+    cursor: var(--point-cursor-tl);
+    position: var(--point-position);
+    background-color: var(--point-background-color);
+    opacity: var(--line-opacity);
+
+    bottom: 0;
+    right: 0;
+  }
+
+  .section {
+
+  }
+}
+
+@import './graph-property.less';
+@import './create-node.less';
+@import './preview.less';

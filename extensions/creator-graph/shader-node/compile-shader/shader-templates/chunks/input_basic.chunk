@@ -1,0 +1,53 @@
+
+CCProgram shader_graph_input_basic %{
+  // @folder input/basic
+
+  /**
+   * @inline
+   * @presicion fixed
+  */
+  float Boolean (float In) {
+    return In;
+  }
+
+  /**
+   * @inline
+   * @presicion fixed
+  */
+  float Float (float In) {
+    return In;
+  }
+
+  /**
+   * @inline
+   * @presicion fixed
+  */
+  vec2 Vector2 (float X, float Y) {
+    return vec2(X, Y);
+  }
+
+  /**
+   * @inline
+   * @presicion fixed
+  */
+  vec3 Vector3 (float X, float Y, float Z) {
+    return vec3(X, Y, Z);
+  }
+
+  /**
+   * @inline
+   * @presicion fixed
+  */
+  vec4 Vector4 (float X, float Y, float Z, float W) {
+    return vec4(X, Y, Z, W);
+  }
+
+  /**
+   * @inline
+   * @type Slider
+   * @presicion fixed
+  */
+  float Slider (float In) {
+    return In;
+  }
+}%

@@ -1,0 +1,9 @@
+
+
+CCProgram shader_graph_common %{
+
+// #include <common>
+#define frac(uv) fract(uv)
+#define lerp(min, max, t) mix(min, max, t)
+
+}%

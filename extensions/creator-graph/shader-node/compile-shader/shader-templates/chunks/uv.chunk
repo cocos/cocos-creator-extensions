@@ -1,0 +1,50 @@
+
+
+// @depChunk
+CCProgram shader_graph_uv %{
+  // @folder uv
+
+  /**
+    * @param uv notConnect=v_uv.xy
+    * @presicion fixed
+  */
+  vec2 PolarCoordinates (vec2 uv, vec2 center, float radialScale, float lengthScale) {
+    vec2 delta = uv - center;
+    float radius = length(delta) * 2. * radialScale;
+    float angle = atan(delta.y, delta.x) * 1.0/6.28 * lengthScale;
+    return vec2(radius, angle);
+  }
+
+  /**
+    * @param uv notConnect=v_uv.xy
+    * @presicion fixed
+  */
+  vec2 RotateCoordinates (vec2 uv, vec2 center, float rotation) {
+    //rotation matrix
+    uv -= center;
+    float s = sin(rotation);
+    float c = cos(rotation);
+
+    //center rotation matrix
+    mat2 rMatrix = mat2(c, -s, s, c);
+    rMatrix *= 0.5;
+    rMatrix += 0.5;
+    rMatrix = rMatrix*2. - 1.;
+
+    //multiply the UVs by the rotation matrix
+    uv *= rMatrix;
+    uv += center;
+
+    return uv;
+  }
+
+  /**
+    * @param uv notConnect=v_uv.xy
+    * @presicion fixed
+    * @inline
+  */
+  vec2 TillingAndOffset (vec2 uv, vec2 tilling, vec2 offset) {
+    return uv * tilling + offset;
+  }
+
+}%
