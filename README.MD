@@ -1,33 +1,55 @@
-# Cocos Creator Extensions
+# Cocos Creator Public Extension Plugin Library
 
 [中文](./README.zh-CN.MD)
 
-Used to store publicly available plugins.
+For storing publicly available extension plugin libraries
 
-Extension List:
+Extension Plugin List：
 
-- [shader-graph](extensions/shader-graph/README.zh-CN.md) (Depends on Cocos Creator editor version >= 3.8.2)
-- [localization-editor](./extensions/localization-editor/README.zh-CN.md) (Depends on Cocos Creator editor version >= 3.7.0)
+- [shader-graph](extensions/shader-graph/README.zh-CN.md)（Depends on the Cocos Creator editor version >= 3.8.2）
+- [localization-editor](./extensions/localization-editor/README.zh-CN.md)（Depends on the Cocos Creator editor version >= 3.7.0）
 
-## Installation
+## Download
 
-Clone the code to your local machine.
+Clone the code to your local computer
 
 ```bash
 git clone https://github.com/cocos/cocos-creator-extensions.git
 ```
 
-## Command Line Instructions
-
-The following commands perform batch operations on the plugins in the extensions directory.
+### Initialisation
 
 ```bash
-// Initialize and build extension
+// Run the install command for initializing cocos-creator-extensions and all plugins in the extensions directory
 npm install
-// Build extension
+```
+
+### Compilation
+
+```bash
+// Run the build command for all plugins in the extensions directory
 npm run build
-// Package extension
-npm run pack 
-// Test extension
+```
+
+### Packaging
+
+```bash
+// Run the packaging command for all plugins in the extensions directory
+npm run pack
+```
+
+### Unit Testing
+
+```bash 
+// Run the unit testing command for all plugins in the extensions directory
 npm run test 
 ```
+
+### Executing a Command for a Single Plugin
+
+Specify **--extension="PluginName"** or **--ext="PluginName"** after each specific command to individually execute a command for a certain plugin.
+
+## Applying Modified Plugins to the Project
+
+1. After modifying a plugin, use npm run pack to package it into a zip file.
+2. In the Cocos Creator editor, open the panel by clicking on Extensions/Extension Manager in the main menu. Click to import the zip plugin.

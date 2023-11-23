@@ -1,8 +1,8 @@
-# Cocos Creator 扩展插件
+# Cocos Creator 公开扩展插件库
 
 [English](./README.MD)
 
-用于存储公开插件
+用于存储公开扩展插件库
 
 插件列表：
 
@@ -11,23 +11,47 @@
 
 ## 安装
 
-将代码克隆到本地计算机[]()
+将代码克隆到本地计算机
 
 ```bash
 git clone https://github.com/cocos/cocos-creator-extensions.git
 ```
 
-## 命令行指令
-
-以下指令都对 **extensions** 目录的插件进行批量操作
+### 初始化
 
 ```bash
-// 初始化与编译
+// 初始化 cocos-creator-extensions 以及 extensions 目录下的所有插件 install 指令
 npm install
-// 单独编译
+```
+
+### 编译
+
+```bash
+// 启动 extensions 目录下的所有插件 build 指令
 npm run build
-// 打包插件
-npm run pack 
-// 测试插件
+```
+
+### 打包
+
+```bash
+// 启动 extensions 目录下所有插件的打包指令
+npm run pack
+```
+
+### 单元测试
+
+```bash 
+// 启动 extensions 目录下的所有插件的单元测试指令
 npm run test 
 ```
+
+### 单独执行某个插件指令
+
+```bash
+在上面每个指定后面指定 --extension="插件名" 或者 --ext="插件名" 即可单独启动某个插件的指令
+```
+
+## 插件修改后，应用到项目中
+
+1. 修改插件以后，使用 **npm run pack** 打包成 zip 包。 
+2. 到 Creator Cocos 编辑器中主菜单点击 **扩展/扩展管理器** 打开面板，点击导入 zip 插件即可。

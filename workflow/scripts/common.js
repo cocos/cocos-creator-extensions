@@ -10,7 +10,7 @@ const chalk = require("chalk");
 let SKIPS = ['.DS_Store'];
 
 /**
- * 运行命令行，如果传入的是 --extensions['插件名'] 或者 --exts=['插件名']
+ * 运行命令行，如果传入的是 --extension='插件名' 或者 --ext='插件名'
  * process.env.npm_config_extension || process.env.npm_config_ext
  * @param commands - string[] | { command: string, arg: string[] }
  * @param skipExtensions - string[] // 跳过插件列表

@@ -15,7 +15,7 @@
 
 ## 准备阶段
 
-1. 下载 Cocos Creator 3.8.2 编辑器 与 [shader-graph.zip](https://github.com/cocos) 插件。
+1. 下载 Cocos Creator 3.8.2 编辑器 与 shader-graph.zip 插件。
 2. 打开 Cocos Creator 3.8.2 编辑器，在主菜单中选择 **扩展/扩展管理器** 打开扩展面板。
 3. 点击 <img src="readme/导入扩展文件.png" width="200px">，选择 **shader-graph.zip** 扩展文件，进行导入。、
 4. 需重启编辑器（**目前 3.8.2 需重启编辑器（为了确保 **.shadergraph** 资源注册生效），后续 >= 3.8.3 版本会完善该流程，可无需重启**）
