@@ -1,4 +1,4 @@
-# Localization Editor Api
+# Localization Editor API
 
 ## 快速开始
 

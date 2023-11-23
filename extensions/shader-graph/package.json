@@ -1,0 +1,273 @@
+{
+    "author": "Cocos Creator",
+    "package_version": 2,
+    "version": "1.0.0",
+    "editor": ">=3.8.2",
+    "name": "shader-graph",
+    "description": "i18n:shader-graph.description",
+    "main": "./dist/main.js",
+    "scripts": {
+        "build": "npm run build-less && tsc",
+        "watch": "tsc -w",
+        "build-less": "lessc ./static/shader-graph/style.less > ./static/shader-graph/style.css",
+        "pack": "npx ts-node ./build/pack.ts",
+        "test": "node --test ./tests"
+    },
+    "dependencies": {
+        "@cocos/creator-types": "^3.8.1",
+        "@electron/remote": "^2.0.11",
+        "@itharbors/structures": "^0.0.6",
+        "@itharbors/ui-graph": "^0.3.2",
+        "@types/js-yaml": "^4.0.5",
+        "@types/lodash": "^4.14.200",
+        "@types/semver": "^7.5.4",
+        "fs-extra": "^10.0.0",
+        "js-yaml": "^4.1.0",
+        "lodash": "^4.17.21",
+        "semver": "^7.5.4",
+        "vue": "2.7.14"
+    },
+    "devDependencies": {
+        "@editor/asset-db": "2.7.0",
+        "@editor/library-type": "3.9.0-90615",
+        "@types/adm-zip": "^0.5.4",
+        "@types/fs-extra": "^9.0.5",
+        "@types/node": "^16.0.1",
+        "adm-zip": "^0.5.10",
+        "ts-node": "^10.9.1",
+        "tslib": "^2.5.3",
+        "typescript": "^4.3.4"
+    },
+    "panels": {
+        "shader-graph": {
+            "title": "i18n:shader-graph.title",
+            "type": "dockable",
+            "main": "dist/panels/shader-graph/index.js",
+            "icon": "./static/icon.png",
+            "size": {
+                "min-width": 400,
+                "min-height": 300,
+                "width": 1024,
+                "height": 600
+            }
+        }
+    },
+    "creator": {
+        "hookScript": "./dist/hooks.js"
+    },
+    "contributions": {
+        "assets": {
+            "menu": {
+                "methods": "./dist/contributions/assets-menu.js",
+                "createMenu": "createMenu"
+            }
+        },
+        "asset-db": {
+            "mount": {
+                "path": "./shader-node/assets",
+                "readonly": true,
+                "visible": "visibleshaderNode",
+                "enable": "enableShaderNode"
+            },
+            "importer": {
+                "script": "./dist/importer/index.js",
+                "priority": [],
+                "list": [
+                    "registerShaderGraphImporter380"
+                ]
+            },
+            "script": "./dist/importer/index.js",
+            "asset-handler": [
+                {
+                    "handler": "registerShaderGraphImporter",
+                    "name": "shader-graph",
+                    "extnames": [
+                        ".shadergraph"
+                    ]
+                }
+            ]
+        },
+        "scene": {
+            "script": "./dist/contributions/scene.js"
+        },
+        "menu": [
+            {
+                "path": "i18n:menu.panel/i18n:shader-graph.menu.name",
+                "label": "i18n:shader-graph.menu.open",
+                "message": "open"
+            }
+        ],
+        "shortcuts": [
+            {
+                "message": "popup-create-menu",
+                "mac": "space",
+                "win": "space"
+            },
+            {
+                "message": "save",
+                "mac": "cmd+s",
+                "win": "ctrl+s"
+            },
+            {
+                "message": "delete",
+                "win": "backspace",
+                "mac": "backspace"
+            },
+            {
+                "message": "delete",
+                "win": "delete",
+                "mac": "delete"
+            },
+            {
+                "message": "copy",
+                "win": "ctrl+c",
+                "mac": "cmd+c"
+            },
+            {
+                "message": "cut",
+                "win": "ctrl+x",
+                "mac": "cmd+x"
+            },
+            {
+                "message": "paste",
+                "win": "ctrl+v",
+                "mac": "cmd+v"
+            },
+            {
+                "message": "duplicate",
+                "win": "ctrl+d",
+                "mac": "cmd+d"
+            },
+            {
+                "message": "undo",
+                "mac": "cmd+z",
+                "win": "ctrl+z"
+            },
+            {
+                "message": "redo",
+                "mac": "cmd+shift+z",
+                "win": "ctrl+shift+z"
+            },
+            {
+                "message": "create-group-node",
+                "mac": "cmd+g",
+                "win": "ctrl+g"
+            },
+            {
+                "message": "restore-group-node",
+                "mac": "cmd+shift+g",
+                "win": "ctrl+shift+g"
+            }
+        ],
+        "messages": {
+            "open-panel": {
+                "methods": [
+                    "openPanel"
+                ]
+            },
+            "open": {
+                "methods": [
+                    "openShaderGraph"
+                ]
+            },
+            "open-asset": {
+                "methods": [
+                    "shader-graph.openAsset"
+                ]
+            },
+            "popup-create-menu": {
+                "methods": [
+                    "shader-graph.onPopupCreateMenu"
+                ]
+            },
+            "scene:ready": {
+                "methods": [
+                    "shader-graph.onSceneReady"
+                ]
+            },
+            "scene:close": {
+                "methods": [
+                    "shader-graph.onSceneClose"
+                ]
+            },
+            "asset-db:asset-add": {
+                "methods": [
+                    "shader-graph.onAssetAdd"
+                ]
+            },
+            "asset-db:asset-delete": {
+                "methods": [
+                    "shader-graph.onAssetDelete"
+                ]
+            },
+            "asset-db:asset-change": {
+                "methods": [
+                    "shader-graph.onAssetChange"
+                ]
+            },
+            "save": {
+                "methods": [
+                    "shader-graph.onSave"
+                ]
+            },
+            "delete": {
+                "methods": [
+                    "shader-graph.onDelete"
+                ]
+            },
+            "copy": {
+                "methods": [
+                    "shader-graph.onCopy"
+                ]
+            },
+            "cut": {
+                "methods": [
+                    "shader-graph.onCut"
+                ]
+            },
+            "paste": {
+                "methods": [
+                    "shader-graph.onPaste"
+                ]
+            },
+            "duplicate": {
+                "methods": [
+                    "shader-graph.onDuplicate"
+                ]
+            },
+            "undo": {
+                "methods": [
+                    "shader-graph.onUndo"
+                ]
+            },
+            "redo": {
+                "methods": [
+                    "shader-graph.onRedo"
+                ]
+            },
+            "create-group-node": {
+                "methods": [
+                    "shader-graph.onCreateGroupNode"
+                ]
+            },
+            "restore-group-node": {
+                "methods": [
+                    "shader-graph.onRestoreGroupNode"
+                ]
+            }
+        },
+        "profile": {
+            "project": {
+                "readOnlyShaderNode": {
+                    "default": false
+                },
+                "enableShaderNode": {
+                    "default": true
+                },
+                "visibleshaderNode": {
+                    "default": true
+                }
+            }
+        }
+    }
+}

@@ -6,12 +6,12 @@
 
 插件列表：
 
-- [creator-graph](./extensions/creator-graph/README.zh-CN.md)
-- [localization-editor](./extensions/localization-editor/README.zh-CN.md)
+- [shader-graph](extensions/shader-graph/README.zh-CN.md)（依赖 Cocos Creator 编辑器版本 >= 3.8.2）
+- [localization-editor](./extensions/localization-editor/README.zh-CN.md)（依赖 Cocos Creator 编辑器版本 >= 3.7.0）
 
 ## 安装
 
-将代码克隆到本地计算机
+将代码克隆到本地计算机[]()
 
 ```bash
 git clone https://github.com/cocos/cocos-creator-extensions.git

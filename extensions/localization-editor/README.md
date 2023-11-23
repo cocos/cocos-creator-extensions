@@ -1,4 +1,4 @@
-# Localization Editor Api
+# Localization Editor API
 
 ## Quick Start
 

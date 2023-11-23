@@ -1,4 +1,4 @@
-# Cocos Creator 扩展插件
+# Cocos Creator Extensions
 
 [中文](./README.zh-CN.MD)
 
@@ -6,8 +6,8 @@ Used to store publicly available plugins.
 
 Extension List:
 
-- [creator-graph](./extensions/creator-graph/README.zh-CN.md)
-- [localization-editor](./extensions/localization-editor/README.zh-CN.md)
+- [shader-graph](extensions/shader-graph/README.zh-CN.md) (Depends on Cocos Creator editor version >= 3.8.2)
+- [localization-editor](./extensions/localization-editor/README.zh-CN.md) (Depends on Cocos Creator editor version >= 3.7.0)
 
 ## Installation
 
