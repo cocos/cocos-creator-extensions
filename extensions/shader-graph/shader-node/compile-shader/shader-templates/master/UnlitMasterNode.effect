@@ -1,0 +1,349 @@
+// Copyright (c) 2017-2020 Xiamen Yaji Software Co., Ltd.
+CCEffect %{
+  techniques:
+  - name: opaque
+    passes:
+    - vert: unlit-vs
+      frag: unlit-fs
+      properties: &props
+        {{properties_mtl}}
+    - &shadow-caster
+      vert: shadow-caster-vs
+      frag: shadow-caster-fs
+      phase: shadow-caster
+      propertyIndex: 0
+      rasterizerState:
+        cullMode: front
+      properties: *props
+    - &reflect-map
+      vert: unlit-vs
+      frag: reflect-map-fs
+      phase: reflect-map
+      propertyIndex: 0
+    - &planar-shadow
+      vert: planar-shadow-vs
+      frag: planar-shadow-fs
+      phase: planar-shadow
+      propertyIndex: 0
+      depthStencilState:
+        depthTest: true
+        depthWrite: false
+        stencilTestFront: true
+        stencilFuncFront: not_equal
+        stencilPassOpFront: replace
+        stencilRef: 0x80 # only use the leftmost bit
+        stencilReadMask: 0x80
+        stencilWriteMask: 0x80
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendDstAlpha: one_minus_src_alpha
+  - name: transparent
+    passes:
+    - vert: unlit-vs
+      frag: unlit-fs
+      depthStencilState: &d1
+        depthTest: true
+        depthWrite: false
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendDstAlpha: one_minus_src_alpha
+      properties: *props
+    - *planar-shadow
+  - name: add
+    passes:
+    - vert: unlit-vs
+      frag: unlit-fs
+      rasterizerState: &r1 { cullMode: none }
+      depthStencilState: *d1
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one
+          blendSrcAlpha: src_alpha
+          blendDstAlpha: one
+      properties: *props
+  - name: alpha-blend
+    passes:
+    - vert: unlit-vs
+      frag: unlit-fs
+      rasterizerState: *r1
+      depthStencilState: *d1
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendSrcAlpha: src_alpha
+          blendDstAlpha: one_minus_src_alpha
+      properties: *props
+}%
+
+{{chunks}}
+
+
+CCProgram shared-ubos %{
+  uniform ShaderGraph_Properties {
+    {{properties}}
+  };
+
+  {{properties_sampler}}
+}%
+
+CCProgram macro-remapping %{
+  #if __VERSION__ < 300
+		#ifdef GL_OES_standard_derivatives
+			#define CC_USE_derivatives 1
+		#else
+			#define CC_USE_derivatives 0
+		#endif
+	#else
+		#define CC_USE_derivatives 1
+	#endif
+
+{{defines}}
+}%
+
+
+CCProgram surface-vertex %{
+  #if CC_POSITION_LOCAL
+    out vec3 v_locPos;
+  #endif
+
+  #if CC_NORMAL_LOCAL
+    out vec3 v_locNormal;
+  #endif
+
+  {{vs_chunks}}
+
+  #define CC_SURFACES_VERTEX_MODIFY_LOCAL_SHARED_DATA
+  void SurfacesVertexModifyLocalSharedData(inout SurfacesStandardVertexIntermediate In)
+  {
+    vec3 position = In.position.xyz;
+    vec3 normal = In.normal.xyz;
+
+    #if CC_SURFACES_USE_TANGENT_SPACE
+      vec4 tangent = In.tangent;
+    #endif
+
+    #if CC_POSITION_WORLD || CC_POSITION_VIEW || CC_NORMAL_WORLD || CC_NORMAL_VIEW
+      mat4 matWorld, matWorldIT;
+      CCGetWorldMatrixFull(matWorld, matWorldIT);
+    #endif
+
+    #if CC_POSITION_WORLD || CC_POSITION_VIEW
+      vec3 worldPos = (matWorld * In.position).xyz;
+    #endif
+
+    #if CC_POSITION_VIEW
+      vec3 viewPos = (cc_matView * vec4(worldPos, 1.)).xyz; 
+    #endif
+
+    #if CC_NORMAL_WORLD || CC_NORMAL_VIEW
+      vec3 worldNormal = normalize((matWorldIT * vec4(In.normal.xyz, 0.0)).xyz);
+    #endif
+
+    #if CC_NORMAL_VIEW
+  		vec3 viewNormal = cc_matView * vec4(worldNormal, 0.0);
+    #endif
+
+    {{code_chunk_0}}
+
+    In.position.xyz = {{slot_Vertex_Position = position}}.xyz;
+    In.normal = {{slot_Vertex_Normal = normal}}.xyz;
+
+    #if CC_SURFACES_USE_TANGENT_SPACE
+      In.tangent = {{slot_Vertex_Tangent = tangent}};
+    #endif
+
+    #if CC_POSITION_LOCAL
+      v_locPos = In.position.xyz;
+    #endif
+
+    #if CC_NORMAL_LOCAL
+      v_locNormal = In.normal.xyz;
+    #endif
+  }
+}%
+
+CCProgram surface-fragment %{
+  precision highp float;
+  // #include <legacy/output-standard>
+  // #include <legacy/fog-fs>
+
+  #if CC_POSITION_LOCAL
+    in vec3 v_locPos;
+  #endif
+
+  #if CC_NORMAL_LOCAL
+    in vec3 v_locNormal;
+  #endif
+
+  {{fs_chunks}}
+
+  #define CC_SURFACES_FRAGMENT_MODIFY_BASECOLOR_AND_TRANSPARENCY
+  vec4 SurfacesFragmentModifyBaseColorAndTransparency()
+  {
+    vec3 worldPos = FSInput_worldPos.xyz;
+    vec3 worldNormal = FSInput_worldNormal.xyz;
+    vec3 worldTangent = FSInput_worldTangent.xyz;
+    // vec3 worldBinormal = surfaceData.worldBinormal;
+
+    #if CC_VIEWDIR_WORLD || CC_VIEWDIR_VIEW || CC_VIEWDIR_LOCAL
+      vec3 worldView = cc_cameraPos.xyz - worldPos.xyz;
+    #endif
+    #if CC_VIEWDIR_VIEW
+      vec3 viewView = (cc_matView * vec4(worldView, 0.0)).xyz;
+    #endif
+    #if CC_VIEWDIR_LOCAL
+      vec3 view = (matWorldIT * vec4(worldView, 0.0)).xyz;
+    #endif
+    
+    #if CC_POSITION_LOCAL
+      vec3 position = v_locPos;
+    #endif
+
+    #if CC_NORMAL_LOCAL
+      vec3 normal = v_locNormal;
+    #endif
+
+    #if CC_POSITION_VIEW
+      vec4 viewPos = cc_matView * vec4(worldPos, 1.);
+    #endif
+
+    {{code_chunk_3}}
+
+    vec4 baseColor;
+    baseColor.a  = {{slot_Alpha = 1.}};
+
+    #if USE_ALPHA_TEST
+    if (baseColor.a <= {{slot_AlphaClipThreshold = 0.}}) {
+      discard;
+    }
+    #endif
+
+    baseColor.rgb = {{slot_BaseColor = vec3(1.)}}.rgb;
+
+    return baseColor;
+  }
+}%
+
+
+CCProgram unlit-vs %{
+  precision highp float;
+
+  // 1. surface internal macros, for technique usage or remapping some user (material) macros to surface internal macros
+  #include <macro-remapping>
+  #include <surfaces/effect-macros/unlit>
+
+  // 2. common include with corresponding shader stage, include before surface functions
+  #include <surfaces/includes/common-vs>
+
+  // 3. user surface functions that can use user (effect) parameters (ubo Constants)
+  //    see surfaces/default-functions/xxx.chunk
+  #include <shared-ubos>
+  #include <surface-vertex>
+
+  // 4. surface include with corresponding shader stage and shading-model (optional)
+  #include <surfaces/includes/standard-vs>
+
+  // 5. shader entry with corresponding shader stage and technique usage/type
+  #include <shading-entries/main-functions/render-to-scene/vs>
+}%
+
+
+CCProgram shadow-caster-vs %{
+  precision highp float;
+  #include <macro-remapping>
+  #include <surfaces/effect-macros/render-to-shadowmap>
+  #include <surfaces/includes/common-vs>
+  #include <shared-ubos>
+  #include <surface-vertex>
+  #include <shading-entries/main-functions/render-to-shadowmap/vs>
+}%
+
+CCProgram planar-shadow-vs %{
+  precision highp float;
+  #include <macro-remapping>
+  #include <surfaces/effect-macros/render-planar-shadow>
+  #include <surfaces/includes/common-vs>
+  #include <shared-ubos>
+  #include <surface-vertex>
+  #include <shading-entries/main-functions/render-planar-shadow/vs>
+}%
+
+
+CCProgram unlit-fs %{
+  #pragma extension([GL_OES_standard_derivatives, __VERSION__ < 300])
+
+  // shading-model : standard
+  // lighting-model : standard (isotropy / anisotropy pbr)
+  // shader stage : fs
+  // technique usage/type : render-to-scene
+
+  precision highp float;
+  // 1. surface internal macros, for technique usage or remapping some user (material) macros to surface internal macros
+  #include <macro-remapping>
+  #include <surfaces/effect-macros/unlit>
+
+  // 2. common include with corresponding shader stage, include before surface functions
+  #include <surfaces/includes/common-fs>
+
+  // 3. user surface functions that can use user (effect) parameters (ubo Constants)
+  //    see surfaces/default-functions/xxx.chunk
+  #include <shared-ubos>
+  #include <surface-fragment>
+
+  // 4. lighting-model (optional)
+  #include <lighting-models/includes/unlit>
+
+  // 5. surface include with corresponding shader stage and shading-model (optional)
+  #include <surfaces/includes/unlit-fs>
+
+  // 6. shader entry with corresponding shader stage and technique usage/type
+  #include <shading-entries/main-functions/render-to-scene/fs>
+}%
+
+CCProgram shadow-caster-fs %{
+  #pragma extension([GL_OES_standard_derivatives, __VERSION__ < 300])
+
+  precision highp float;
+  #include <macro-remapping>
+  #include <surfaces/effect-macros/render-to-shadowmap>
+  #include <surfaces/includes/common-fs>
+  #include <shared-ubos>
+  #include <surface-fragment>
+  #include <shading-entries/main-functions/render-to-shadowmap/fs>
+}%
+
+CCProgram planar-shadow-fs %{
+  #pragma extension([GL_OES_standard_derivatives, __VERSION__ < 300])
+
+  precision highp float;
+  #include <macro-remapping>
+  #include <surfaces/effect-macros/render-planar-shadow>
+  #include <surfaces/includes/common-fs>
+  #include <shared-ubos>
+  #include <surface-fragment>
+  #include <shading-entries/main-functions/render-planar-shadow/fs>
+}%
+
+CCProgram reflect-map-fs %{
+  #pragma extension([GL_OES_standard_derivatives, __VERSION__ < 300])
+
+  precision highp float;
+  #include <macro-remapping>
+  #include <surfaces/effect-macros/unlit>
+  #include <surfaces/includes/common-fs>
+  #include <shared-ubos>
+  #include <surface-fragment>
+  #include <lighting-models/includes/unlit>
+  #include <surfaces/includes/unlit-fs>
+  #include <shading-entries/main-functions/render-to-reflectmap/fs>
+}%

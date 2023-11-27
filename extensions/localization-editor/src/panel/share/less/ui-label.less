@@ -1,0 +1,45 @@
+ui-label {
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: 400;
+    word-break: keep-all;
+    &:not([color]){
+        color: @white-color;
+    }
+    font: @ping-fang-font;
+    /* 使用 source han sans cn 字体*/
+    &.normalFont {
+        font-family:@normal-font;
+    }
+
+    &.red {
+        color: @red-color;
+    }
+    &.weakGray {
+        color: @weak-gray-color;
+    }
+    &.weakWhite {
+        color: @weak-white-color;
+    }
+    &.bitWeakWhite{
+        color: @bit-weak-white-color;
+    }
+    &.weakerWhite {
+        color: @weaker-white-color;
+    }
+    &.strongWhite {
+        color: @strong-white-color;
+    }
+    &.yellow {
+        color: @yellow-color;
+    }
+    &.selectable {
+        user-select: text;
+    }
+    &.link {
+        &:hover{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    }
+}

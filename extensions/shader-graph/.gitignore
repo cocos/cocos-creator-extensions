@@ -1,0 +1,7 @@
+# git@github.com:moshuying/cocos-msy-dev-test.git
+
+#///////////////////////////
+# Cocos Creator Extension
+#///////////////////////////
+dist
+src/config/secrets.json

@@ -1,0 +1,13 @@
+// @depChunk
+CCProgram shader_graph_range %{
+  // @folder math/range
+
+  /*
+  * @presicion fixed
+  */
+  float RandomRange (vec2 seed, float minv, float maxv) {
+      float randomno = fract(sin(dot(seed, vec2(12.9898, 78.233)))*43758.5453);
+      return mix(minv, maxv, randomno);
+  }
+
+}%

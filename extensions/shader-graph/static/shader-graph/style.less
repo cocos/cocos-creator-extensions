@@ -1,0 +1,139 @@
+#shader-graph {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  ui-link {
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+
+  ui-graph-forge {
+    flex: 1;
+    background-color: #222;
+  }
+
+  .foreground {
+    overflow: hidden;
+    position: absolute;
+    z-index: 998;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    .drag-area {
+      position: absolute;
+      top: 0; // graph header 的高度
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      &[disallowed-event] {
+        pointer-events: none;
+      }
+    }
+
+    &[disallowed-event] {
+      pointer-events: none;
+    }
+
+  }
+
+  .mask[show] {
+    opacity: 1;
+  }
+
+  .mask {
+    position: absolute;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+
+    .mask-child {
+      display: flex;
+      z-index: 999;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(2, 2, 2, 0.9);
+      pointer-events: auto;
+      //font-size: 16px;
+
+      .button {
+        margin: 2px;
+        width: 100px;
+        height: 24px;
+        //border: 1px solid var(--color-normal-fill);
+        border: 1px solid;
+        border-radius: 4px;
+        line-height: 24px;
+        //color: var(--color-normal-fill);
+      }
+      .button:hover {
+        border: 1px solid var(--color-success-fill);
+        color: var(--color-success-fill-emphasis);
+      }
+
+      .asset-missing {
+        display: flex;
+        align-items: center;
+      }
+
+      .need-create-new-asset {
+        display: flex;
+        align-items: center;
+      }
+
+      .asset-change {
+        display: flex;
+        align-items: center;
+      }
+
+      .button-group-horizontal {
+        padding: 4px;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+      }
+      .button-group-vertical {
+        padding: 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  }
+
+  .right-tabs {
+    position: absolute;
+    width: 28px;
+    z-index: 999;
+    top: 28px;
+    right: 1px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #1F1F1F;
+    box-shadow: inset 0 0 1px #2b2b2b;
+
+    .tab {
+      width: 28px;
+      height: 115px;
+      writing-mode: tb;
+      text-align: center;
+      padding: 2px;
+      cursor: pointer;
+    }
+    .tab[pressed] {
+      background-color: #2B2B2B;
+    }
+  }
+}
+
+@import './float-window.less';

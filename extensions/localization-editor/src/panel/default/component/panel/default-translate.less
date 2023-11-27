@@ -1,0 +1,407 @@
+div.translate {
+    @import url('../../../share/less/ui-label.less');
+    overflow-x: auto;
+
+    .table {
+        flex: 1;
+        overflow-y: scroll;
+        .tr {
+            display: flex;
+            align-items: center;
+
+            &.head {
+                position: sticky;
+                background-color: @strong-gray-color;
+                top: 0px;
+                z-index: 2;
+            }
+
+            &:not(:first-child) {
+
+                &:hover,
+                &:focus,
+                &:focus-within {
+                    background-color: @gray-color  !important;
+                }
+            }
+
+            &:last-child {
+                border-bottom: 1px solid @gray-color;
+            }
+            &:nth-child(2n) {
+                background-color: @weak-dark-color;
+            }
+        }
+    }
+
+    // 表头
+    .table {
+        .tr>.th {
+            &>div {
+                display: flex;
+                justify-content: left;
+                padding: 4px 16px;
+
+                &>div.container {
+                    padding: 2px 0px;
+
+                    &>ui-label {
+                        height: 20px;
+                        margin-right: 8px;
+                    }
+                }
+            }
+
+            border: 1px solid @gray-color;
+        }
+    }
+    // 下面的表
+    .table {
+        .tr>.td {
+            border-right: 1px solid @gray-color;
+            border-left: 1px solid @gray-color;
+            border-top: 1px solid transparent;
+            border-bottom: 1px solid transparent;
+
+            &:focus-within,
+            &:focus {
+                & div>.mInput[isediting='true']{
+                    background-color: #141414;
+
+                    &>.icon>ui-button {
+                        visibility: hidden;
+                    }
+                }
+
+
+                border-color: @black-blue-color;
+            }
+
+            &>div {
+                &:not(:hover)>.mInput>.icon>ui-button.import {
+                    visibility: hidden;
+                }
+
+                &>.mInput>textarea,
+                &>.mInput>.icon {
+                    line-height: 24px;
+                    height: 24px;
+                }
+            }
+        }
+    }
+    // 表头和下面的表
+    .table {
+        .tr>.td,
+        .tr>.th {
+            // 将 m-input 默认样式修改
+            div.mInput {
+                background-color: transparent;
+                border-radius: 0px;
+                border: transparent;
+                padding: 4px 16px;
+            }
+
+            flex: 1;
+
+            &>div {
+                &> :first-child {
+                    flex: 1;
+                }
+
+                &>.mInput>.icon>ui-button {
+                    height: 24px;
+                    line-height: 24px;
+
+                    &>ui-label {
+                        line-height: 24px;
+                    }
+                }
+            }
+        }
+    }
+
+    background-color: @dark-color;
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+
+    ui-label {
+        font: @normal-font;
+
+        &::selection {
+            background-color: rgba(63, 170, 201, 1);
+        }
+    }
+
+    head {
+        display: block;
+        overflow: hidden;
+
+        &>div.toolbar {
+            padding: 2px 16px;
+            background-color: @strong-gray-color;
+        }
+    }
+
+    body {
+        overflow: hidden;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 16px 16px 0px 16px;
+        background-color: @dark-color;
+        overflow: hidden;
+
+        &>div.tabs {
+            &>div.tab {
+                padding: 4px 16px;
+                cursor: pointer;
+                color: @bit-weak-white-color;
+
+                &:hover {
+                    background-color: @weak-gray-color;
+                }
+
+                &:active {
+                    background-color: @weaker-white-color;
+                }
+
+                &.selected {
+                    background-color: @strong-gray-color;
+                    color: @white-color;
+                }
+            }
+        }
+
+        &>div.div {
+            background-color: @strong-gray-color;
+            padding: 16px 8px 0px 16px;
+            overflow-y: hidden;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    footer {
+        overflow: hidden;
+        padding: 16px 48px;
+        overflow-y: auto;
+        min-height: 76px;
+        height: 76px;
+        background-color: @weak-dark-color;
+
+        &>div>ui-label {
+            margin-right: 16px;
+        }
+    }
+
+    div.container {
+        display: flex;
+        &.row {
+            flex-direction: row;
+
+            &>.fill {
+                flex: 1;
+            }
+        }
+    }
+
+    &>div.dialog {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 4;
+        overflow: hidden;
+
+        &>div.content {
+            box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+            background-color: @dark-color;
+            display: flex;
+            flex-direction: column;
+
+            &>div.header {
+                background-color: @strong-gray-color;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 40px;
+                flex-shrink: 0;
+            }
+
+            &>div.body {
+                padding: 16px 16px 0 16px;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                margin-bottom: 8px;
+
+                &>ui-label {
+                    flex-shrink: 0;
+                }
+
+                &>div {
+                    margin-top: 16px;
+                    padding: 16px calc((16 - var(--size-normal-font)) * 1px) 16px 16px;
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    background-color: @strong-gray-color;
+                    overflow: hidden;
+
+                    &>div.container.row {
+                        height: 20px;
+                        margin-bottom: 20px;
+                        margin-right: calc(var(--size-normal-font) * 1px);
+                        &>:first-child {
+                            margin-right: 8px;
+                        }
+
+                    }
+                    &>div.table {
+                        flex: 1;
+                        overflow-y: scroll;
+
+                        div.tr {
+                            &>div.th,
+                            &>div.td {
+                                &:first-child {
+                                    max-width: 48px;
+                                    justify-content: center;
+                                    padding-left: 0px;
+                                }
+
+                                padding-left: 16px;
+                                display: flex;
+                                align-items: center;
+                                height: 32px;
+
+                                &.hideOverFlow {
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    white-space: nowrap;
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            &>div.footer {
+                flex-shrink: 0;
+                height: 72px;
+                display: flex;
+                flex-direction: row-reverse;
+                align-items: center;
+
+                &>ui-button {
+                    margin-right: 16px;
+                }
+            }
+
+        }
+    }
+
+    &>div.variants {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        &>div {
+            background-color: @weak-dark-color;
+            width: 465px;
+            min-width: 465px;
+            overflow: hidden;
+            box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+
+            &>.header {
+                display: flex;
+                justify-content: center;
+                height: 40px;
+
+                &>ui-label {
+                    line-height: 40px;
+                }
+            }
+
+            &>.body {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                overflow-y: auto;
+                padding: 16px;
+                background-color: @strong-gray-color;
+                background-color: @dark-color;
+
+                &>div {
+                    padding: 16px 4px 16px 16px;
+                    background-color: @strong-gray-color;
+                }
+            }
+
+            &>.footer {
+                height: 80px;
+                background-color: @dark-color;
+                padding: 0px 16px;
+
+                &>div {
+                    display: flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    height: 100%;
+                }
+            }
+
+            &>.table {
+                left: 0;
+                right: 0;
+                margin: auto;
+                width: 400px;
+            }
+        }
+    }
+
+    &>div.save-mask {
+        position: absolute;
+        z-index: 999;
+        align-items: center;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0);
+        text-align: center;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-content: center;
+        flex-direction: row;
+
+        &>div.mask-bg {
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            align-content: center;
+            flex-direction: row;
+            width: 350px;
+            height: 150px;
+            background-color: rgba(0, 0, 0, 1);
+        }
+    }
+}

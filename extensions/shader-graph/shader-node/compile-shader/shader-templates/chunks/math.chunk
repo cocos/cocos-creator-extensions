@@ -1,0 +1,451 @@
+
+CCProgram shader_graph_math %{
+  // @folder math/advanced
+
+  /**
+   * @inline
+  */
+  vec4 Absolute(vec4 In) {
+    return abs(In);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 Exponential(vec4 In) {
+    return exp(In);
+  }
+  
+  /**
+   * @inline
+  */
+  vec4 Length(vec4 In) {
+    return length(In);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 Log(vec4 In) {
+    return log(In);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 Modulo(vec4 A, vec4 B) {
+    return mod(A, B);
+  }
+  
+  /**
+   * @inline
+  */
+  vec4 Negate(vec4 In) {
+    return -In;
+  }
+
+  /**
+   * @inline
+  */
+  vec4 Normalize(vec4 In) {
+    return normalize(In);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 Posterize(vec4 In, vec4 Steps) {
+    return floor(In / (1. / Steps)) * (1. / Steps);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 Reciprocal(vec4 In) {
+    return 1. / In;
+  }
+
+  /**
+   * @inline
+  */
+  vec4 ReciprocalSquare(vec4 In) {
+    return 1. / (In * In);
+  }
+
+
+  // @folder math/basic
+
+  /**
+   * @presicion max
+   * @inline
+  */
+  vec4 Add (vec4 A, vec4 B) {
+    return A + B;
+  }
+
+  /**
+   * @presicion max
+   * @inline
+  */
+  vec4 Substract (vec4 A, vec4 B) {
+    return A - B;
+  }
+
+  /**
+   * @presicion max
+   * @inline
+  */
+  vec4 Divide (vec4 A, vec4 B) {
+    return A / B;
+  }
+
+  /**
+   * @presicion max
+   * @inline
+  */
+  vec4 Multiply (vec4 A, vec4 B) {
+    return A * B;
+  }
+
+  /**
+   * @presicion fixed
+   * @inline
+  */
+  vec4 Power (vec4 A, vec4 B) {
+    return pow(A, B);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 Square (vec4 A) {
+    return sqrt(A);
+  }
+  
+  // @folder math/round
+
+  /**
+   * @inline
+  */
+  vec4 Ceil (vec4 In) {
+    return ceil(In);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 Floor (vec4 In) {
+    return floor(In);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 Round (vec4 In) {
+    return floor(In + 0.5);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 Sign (vec4 In) {
+    return sign(In);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 Step (vec4 Edge, vec4 In) {
+    return step(Edge, In);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 Truncate (vec4 In) {
+    return trunc(In);
+  }
+  
+  // @folder math/interpolation
+
+  /**
+   * @inline
+  */
+  vec4 InverseLerp (vec4 A, vec4 B, vec4 T) {
+    return (T - A) / (B - A);
+  }
+
+  /**
+   * @inline
+   * @presicion max
+  */
+  vec4 Lerp (vec4 A, vec4 B, vec4 T) {
+    return mix(A, B, T);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 Smoothstep (vec4 Edge1, vec4 Edge2, vec4 In) {
+    return smoothstep(Edge1, Edge2, In);
+  }
+  
+
+  // @folder math/trigonometry
+
+  /**
+   * @inline
+  */
+  vec4 Arccosine (vec4 In) {
+    return acos(In);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 Arcsine (vec4 In) {
+    return asin(In);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 Arctangent2 (vec4 A, vec4 B) {
+    return atan2(A, B);
+  }
+  
+  /**
+   * @inline
+  */
+  vec4 Arctangent (vec4 In) {
+    return atan(In);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 Cosine (vec4 In) {
+    return cos(In);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 Sine (vec4 In) {
+    return sin(In);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 Tangent (vec4 In) {
+    return tan(In);
+  }
+  
+  /**
+   * @inline
+  */
+  vec4 DegreesToRadians (vec4 In) {
+    return radians(In);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 RadiansToDegrees (vec4 In) {
+    return degrees(In);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 HyperbolicCosine (vec4 In) {
+    return cosh(In);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 HyperbolicSine (vec4 In) {
+    return sinh(In);
+  }
+  
+  /**
+   * @inline
+  */
+  vec4 Hyperbolic (vec4 In) {
+    return tanh(In);
+  }
+  
+  // @folder math/vector
+  
+  /**
+   * @inline
+  */
+  vec4 CrossProduct (vec4 A, vec4 B) {
+    return cross(A, B);
+  }
+
+  /**
+   * @inline
+   * @presicion fixed
+  */
+  float Distance (vec4 A, vec4 B) {
+    return distance(A, B);
+  }
+
+  /**
+   * @inline
+   * @presicion fixed
+  */
+  float DotProduct (vec4 A, vec4 B) {
+    return dot(A, B);
+  }
+
+  /**
+   * @inline
+   * @presicion fixed
+  */
+  float Fresnel (vec3 Normal, vec3 ViewDir, float Power) {
+    return pow((1.0 - saturate(dot(normalize(Normal), normalize(ViewDir)))), Power);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 Projection (vec4 A, vec4 B) {
+    return B * dot(A, B) / dot(B, B);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 Reflection(vec4 In, vec4 Normal) {
+    return reflect(In, Normal);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 Rejection(vec4 A, vec4 B) {
+    return A - (B * dot(A, B) / dot(B, B))
+  }
+
+  /**
+   * @inline
+  */
+  vec4 SphereMask(vec4 Coords, vec4 Center, float Radius, float Hardness) {
+    return 1 - saturate((distance(Coords, Center) - Radius) / (1 - Hardness));
+  }
+
+
+  // @folder math/range
+  
+  /**
+   * @inline
+  */
+  vec4 Clamp(vec4 In, vec4 Min, vec4 Max) {
+    return clamp(In, Min, Max);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 Fraction(vec4 In) {
+    return fract(In);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 Max(vec4 A, vec4 B) {
+    return max(A, B);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 Min(vec4 A, vec4 B) {
+    return min(A, B);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 OneMinus(vec4 In) {
+    return 1. - In;
+  }
+
+  /**
+   * @inline
+   * @presicion max
+  */
+  vec4 Remap(vec4 In, vec2 InMinMax, vec2 OutMinMax) {
+    return OutMinMax.x + (In - InMinMax.x) * (OutMinMax.y - OutMinMax.x) / (InMinMax.y - InMinMax.x);
+  }
+  
+  /**
+   * @inline
+  */
+  vec4 Saturate(vec4 In) {
+    return saturate(In);
+  }
+
+
+  // @folder math/derivative
+  
+  /**
+   * @inline
+  */
+  vec4 DDX (vec4 In) {
+    return dFdx(In);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 DDY (vec4 In) {
+    return dFdy(In);
+  }
+
+  /**
+   * @inline
+  */
+  vec4 DDXY (vec4 In) {
+    return abs(dFdx(In)) + abs(dFdy(In));
+  }
+
+  // @folder math/wave
+
+  /**
+   * @inline
+  */
+  vec4 TriangleWave (vec4 In) {
+    return 2.0 * abs( 2 * (In - floor(0.5 + In)) ) - 1.0;
+  }
+
+  /**
+   * @inline
+  */
+  vec4 NoiseSineWave(vec4 In, vec2 MinMax) {
+    float sinIn = sin(In);
+    float sinInOffset = sin(In + 1.0);
+    float randomno =  frac(sin((sinIn - sinInOffset) * (12.9898 + 78.233))*43758.5453);
+    float noise = lerp(MinMax.x, MinMax.y, randomno);
+    return sinIn + noise;
+  }
+
+  /**
+   * @inline
+  */
+  vec4 SawtoothWave(vec4 In) {
+    return 2 * (In - floor(0.5 + In));
+  }
+
+  /**
+   * @inline
+  */
+  vec4 SquareWave(vec4 In) {
+    return 1.0 - 2.0 * round(frac(In));
+  }
+}%

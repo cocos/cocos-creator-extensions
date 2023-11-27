@@ -1,0 +1,21 @@
+div.mSection {
+    &>div.header {
+        display: flex;
+        cursor: pointer;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        align-items: center;
+
+        &>.icon:not([upside-down="true"]) {
+            transform: rotate(-90deg);
+        }
+
+        &>.icon {
+            transform: rotate(0deg);
+        }
+    }
+
+    &>div.content {
+        padding-left: 14px;
+    }
+}

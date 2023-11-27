@@ -1,0 +1,21 @@
+div.mMenu {
+    position: absolute;
+    border-radius: 4px;
+    border: 1px solid #000000;
+    background: #1f1f1f;
+    box-shadow: 0 4px 8px 0 #000000;
+    padding: 4px 4px 2px 4px;
+    min-width: 120px;
+    &> div {
+        height: 24;
+        padding-left: 6px;
+        margin-bottom: 2px;
+        &> ui-label {
+            line-height: 24px;
+        }
+        &:hover {
+            background-color: @gray-color;
+            cursor: pointer;
+        }
+    }
+}

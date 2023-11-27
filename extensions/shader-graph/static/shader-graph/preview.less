@@ -1,0 +1,107 @@
+.preview {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+
+  .header {
+    display: flex;
+    align-items: center;
+    background-color: #141414;
+    width: 100%;
+    height: 25px;
+  }
+
+  .title-label {
+    margin-left: 8px;
+  }
+
+  .section {
+    flex: 1;
+    min-height: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+  }
+
+  .section > canvas {
+
+  }
+
+  .section > .loading {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 25px;
+    width: 100%;
+    height: calc(100% - 25px);
+    justify-content: center;
+  }
+
+  .section > .tools {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-content: center;
+    align-items: center;
+    right: 20px;
+    top: 28px;
+
+    .refresh {
+      opacity: 0.3;
+      margin-left: 2px;
+      margin-right: 2px;
+    }
+    .refresh:hover {
+      opacity: 1;
+    }
+
+    .light {
+      opacity: 0.3;
+      margin-left: 2px;
+      margin-right: 2px;
+      --ui-button-bg-color-pressed: rgba(255, 255, 255, 0);
+    }
+    .light[pressed] {
+      opacity: 1;
+      color: white;
+    }
+    .light:hover {
+      opacity: 1;
+    }
+  }
+
+  .section > .primitive-group {
+    position: absolute;
+    bottom: 6px;
+    left: 25px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 100%;
+
+    ui-label {
+      width: 50px;
+    }
+
+    ui-asset {
+      width: calc(100% - 100px);
+    }
+  }
+
+  .close {
+    position: absolute;
+    right: 5px;
+    color: #8F8F8F;
+    cursor: pointer;
+  }
+  .close:hover {
+    color: #cccccc;
+  }
+}

@@ -1,0 +1,55 @@
+import { MainName } from "../../service/util/global";
+
+export enum MessageCode {
+    SUCCESS = 200,
+    // 编辑器问题3xx
+    EDITOR_DIRTY = 300,
+    // 插件前端请求参数问题4xx
+    TRANSLATE_API_ERROR = 400,
+    UNKNOWN_FILE_TYPE = 401,
+    VARIANT_NOT_FOUND = 402,
+    TARGET_TRANSLATE_DATA_NOT_FOUND = 403,
+    TARGET_TRANSLATE_DATA_EXIST = 404,
+    LOCAL_LANGUAGE_NOT_SET = 405,
+    TRANSLATE_PROVIDER_CONFIG_NOT_FOUND = 406,
+    PROVIDER_TAG_NOT_FOUND = 407,
+    TRANSLATE_ITEM_NOT_FOUND = 408,
+    SCAN_OPTION_EMPTY = 409,
+    PROVIDER_INPUT_ERROR = 410,
+    AUTO_TRANSLATE_NETWORK_ERROR = 411,
+    PO_FILE_LANGUAGE_NOT_EQUAL = 412,
+    UNAVAILABLE_CSV_FILE = 413,
+    UNAVAILABLE_XLSX_FILE = 414,
+    // 插件后端问题5xx
+    UNKNOWN_ERROR = 500,
+    MERGE_DIFFERENT_KEY = 501,
+    INDEX_TRANSLATE_DATA_NOT_FOUND = 502,
+    SCENE_ERROR = 503,
+    INVALID_TRANSLATE_DATA = 504,
+    INVALID_TRANSLATE_FILE_CONTENT = 505,
+}
+
+export const MessageMap: Map<MessageCode, () => string> = new Map([
+    [MessageCode.SUCCESS, () => ''],
+    [MessageCode.EDITOR_DIRTY, () => Editor.I18n.t(MainName + '.error.editor_dirty')],
+    [MessageCode.TRANSLATE_API_ERROR, () => Editor.I18n.t(MainName + '.error.editor_dirty')],
+    [MessageCode.UNKNOWN_FILE_TYPE, () => Editor.I18n.t(MainName + '.error.unknown_file_type')],
+    [MessageCode.TARGET_TRANSLATE_DATA_NOT_FOUND, () => Editor.I18n.t(MainName + '.error.target_translate_data_not_found')],
+    [MessageCode.TARGET_TRANSLATE_DATA_EXIST, () => Editor.I18n.t(MainName + '.error.target_translate_data_exist')],
+    [MessageCode.LOCAL_LANGUAGE_NOT_SET, () => Editor.I18n.t(MainName + '.error.local_language_not_set')],
+    [MessageCode.TRANSLATE_PROVIDER_CONFIG_NOT_FOUND, () => Editor.I18n.t(MainName + '.error.tanslate_provider_config_not_found')],
+    [MessageCode.PROVIDER_TAG_NOT_FOUND, () => Editor.I18n.t(MainName + '.error.provider_tag_not_found')],
+    [MessageCode.TRANSLATE_ITEM_NOT_FOUND, () => Editor.I18n.t(MainName + '.error.translate_item_not_found')],
+    [MessageCode.SCAN_OPTION_EMPTY, () => Editor.I18n.t(MainName + '.error.scan_option_empty')],
+    [MessageCode.PROVIDER_INPUT_ERROR, () => Editor.I18n.t(MainName + '.error.provider_input_error')],
+    [MessageCode.AUTO_TRANSLATE_NETWORK_ERROR, () => Editor.I18n.t(MainName + '.error.auto_translate_network_error')],
+    [MessageCode.PO_FILE_LANGUAGE_NOT_EQUAL, () => Editor.I18n.t(MainName + '.error.po_file_language_not_equal')],
+    [MessageCode.UNAVAILABLE_CSV_FILE, () => Editor.I18n.t(MainName + '.error.unavailable_csv_file')],
+    [MessageCode.UNAVAILABLE_XLSX_FILE, () => Editor.I18n.t(MainName + '.error.unavailable_xlsx_file')],
+    [MessageCode.UNKNOWN_ERROR, () => Editor.I18n.t(MainName + '.error.unknown_error')],
+    [MessageCode.MERGE_DIFFERENT_KEY, () => Editor.I18n.t(MainName + '.error.merge_different_key')],
+    [MessageCode.INDEX_TRANSLATE_DATA_NOT_FOUND, () => Editor.I18n.t(MainName + '.error.index_translate_data_not_found')],
+    [MessageCode.SCENE_ERROR, () => Editor.I18n.t(MainName + '.error.scene_error')],
+    [MessageCode.INVALID_TRANSLATE_DATA, () => Editor.I18n.t(MainName + '.error.invalid_translate_data')],
+    [MessageCode.INVALID_TRANSLATE_FILE_CONTENT, () => Editor.I18n.t(MainName + '.error.invalid_translate_file_content')],
+]);

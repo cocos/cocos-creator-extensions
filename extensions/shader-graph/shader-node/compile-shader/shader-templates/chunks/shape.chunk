@@ -1,0 +1,54 @@
+
+
+// @depChunk
+CCProgram shader_graph_shape %{
+  // @folder procedural/shape
+
+  /*
+  * @presicion fixed
+  * @param uv notConnect=v_uv.xy
+  * @param width default=0.5
+  * @param height default=0.5
+  */
+  float Ellipse (vec2 uv, float width, float height) {
+      #if CC_USE_derivatives
+          float d = length((uv * 2. - 1.) / vec2(width, height));
+          return saturate((1. - d) / fwidth(d));
+      #else
+          return 1.;
+      #endif
+  }
+
+  /*
+  * @presicion fixed
+  * @param uv notConnect=v_uv.xy
+  * @param width default=0.5
+  */
+  float Rectangle (vec2 uv, float width) {
+    #if CC_USE_derivatives
+      vec2 d = abs(uv * 2. - 1.) - vec2(width, width);
+      d = 1. - d / fwidth(d);
+      return saturate(min(d.x, d.y));
+    #else
+      return 1.;
+    #endif
+  }
+
+  /*
+  * @presicion fixed
+  * @param uv notConnect=v_uv.xy
+  * @param width default=0.5
+  * @param radius default=0.1
+  */
+  float RoundRectangle (vec2 uv, float width, float radius) {
+    #if CC_USE_derivatives
+      radius = max(min(min(abs(radius * 2.), abs(width)), abs(width)), float(1e-5));
+      uv = abs(uv * 2. - 1.) - vec2(width, width) + radius;
+      float d = length(max(vec2(0.), uv)) / radius;
+      return saturate((1. - d) / fwidth(d));
+    #else
+      return 1.;
+    #endif
+  }
+
+}%

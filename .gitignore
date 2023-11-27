@@ -20,6 +20,7 @@ dist/
 build/
 .tmp/
 .cache/
+.history/
 
 # 忽略日志文件
 logs/
@@ -35,5 +36,4 @@ coverage/
 *.swp
 
 # 忽略自动生成的文档和注释
-docs/
-*.html
+extensions/shader-graph/.npmrc
