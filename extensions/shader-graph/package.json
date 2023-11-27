@@ -29,7 +29,6 @@
     },
     "devDependencies": {
         "@editor/asset-db": "2.7.0",
-        "@editor/library-type": "3.9.0-90615",
         "@types/adm-zip": "^0.5.4",
         "@types/fs-extra": "^9.0.5",
         "@types/node": "^16.0.1",
