@@ -10,8 +10,8 @@ import { gte } from 'semver';
  */
 exports.register = async function(info: { [key: string]: any}) {
     const version = Editor.App.version;
-    // 3.9.0 使用新版本的添加菜单方式，移除旧的方式
-    if (gte(version, '3.9.0')) {
+    // 3.8.3 使用新版本的添加菜单方式，移除旧的方式
+    if (gte(version, '3.8.3')) {
         delete info.contributions.assets.menu;
     }
 };
