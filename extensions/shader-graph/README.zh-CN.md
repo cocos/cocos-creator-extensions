@@ -1,11 +1,18 @@
 # Shader Graph
 
-## 介绍
+## 背景
 
-该插件支持可视化编辑器着色器
+为了降低 Shader 编写的门槛以及拓展程序化生成的能力，鼓励美术/TA 直接在 Cocos Creator 而不是第三方 DCC 中生产材质，避免导入材质时的二次开发工作，我们提供了一个针对 Cocos Creator 的节点材质编辑器。
+
+该插件依赖 Cocos Creator 3.8.2 版本，并基于自研的开源 [Web UI 库中的 Graph 组件](https://github.com/itharbors/ui/tree/main/element/graph) 进行开发。
+
+为了促进开发者社区的合作和创新，我们以 MIT 协议开源该插件的全套源码，这意味着开发者可以自由使用、修改和分发这一工具。期待这一项目能激发社区更多的灵感和创造力，希望大家在完善这个工具的时候不要藏着掖着，多多给我们提 PR！
+
+### 源码
+
+GitHub：[shader-graph](https://github.com/knoxHuang/cocos-creator-extensions/tree/main/extensions/shader-graph)
 
 <img src="readme/效果图.png" width="800px">
-
 
 ### 基本结构
 
@@ -100,7 +107,7 @@
 
 #### 节点库
 
-详细内容可查看 [传送门](shader-node/README.md)
+详细内容可查看 [传送门](shader-node/README.zh-CN.md)
 
 ---
 
@@ -131,3 +138,10 @@ npm run pack - 打包成 zip 包
 
 - 预览面板不支持动态预览
 
+### 开发团队
+
+- Devs: Knox、Youyou
+- Framework：VisualSJ
+- PM：AndyTian
+- UI/UX：派大星
+- Director：Jare

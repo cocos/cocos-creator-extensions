@@ -1,15 +1,15 @@
 ## Shader Node
 
-Used for creating and parsing shader nodes.
+用于创建与解析 shader node
 
 ---
 
-### Automatic Node Library Generation
+### 自动创建节点库
 
-The code for the node library is parsed by executing **.scripts/generate.js** on the **chunks and masters** defined within 
-shader-templates, dynamically creating code in the **assets/operation** directory.
+节点库的代码是通过执行 **.scripts/generate.js** 对 **shader-templates** 内部定义的 **chunk 与 master** 进行解析，动态
+创建代码到 **assets/operation** 目录下。
 
-**Template**
+**模版**
 - chunk
     - common
     - input_basic
@@ -24,7 +24,7 @@ shader-templates, dynamically creating code in the **assets/operation** director
 
 ---
 
-**Generated Nodes**
+**生成后的节点**
 - Input
     - Basic
         - Float
@@ -142,51 +142,51 @@ shader-templates, dynamically creating code in the **assets/operation** director
 
 ---
 
-## How to define the node class
+## 如何定义节点类
 
 ```typescript
-// This path needs to be modified according to the path where you are storing it
+// 这路径需要根据你存放的路径进行修改
 import { register } from '../../../../graph/register';
 import { ShaderNode } from '../../../base';
 import { slot } from '../../../utils';
 
 @register({
-    // Menu for creating a node
+    // 创建节点的菜单
     menu: 'Custom/Foo',
-    // The name of the node
+    // 节点的名字
     title: 'Foo',
-    // The style of the node
+    // 节点的样式
     style: {
         headerColor: '#ff1e00'
     },
-    // Whether the node is a master node (master nodes are not deleted, there is only one master node)
+    // 是否是主节点（主节点不会被删除，只有一个主节点）
     master: false,
 })
 export class Foo extends ShaderNode {
-    // Define properties on the node
-    // slot is similar to prop in that it defines information about the properties on the node.
-    // Parameter one [string]: name
-    // parameter two [any]: default value
-    // Parameter three [string]: type
-    // Parameter four [string]: type of connection
-    // Parameter five [Object]: custom object
+    // 定义节点上的属性
+    // slot 与 prop 相近，都是定义节点上属性的信息
+    // 参数一[string]：名字
+    // 参数二[any]：默认值
+    // 参数三[string]：类型
+    // 参数四[string]：连接的类型
+    // 参数五[Object]：自定义对象
     data = {
-        // Input property list
+        // 输入属性列表
         inputs: [
             slot('In', 0, 'float', 'vector'),
         ],
-        // Output property list
+        // 输出属性列表
         outputs: [
             slot('Out', 0, 'float', 'vector'),
         ],
-        // List of attributes
+        // 属性列表
         props: [
             prop('Prop', 99, 'float'),
         ],
     };
 
     /**
-     * Generating an effect 
+     * 生成 effect 
      */    
     generateCode() {
         const input0 = this.getInputValue(0);
@@ -199,18 +199,18 @@ export class Foo extends ShaderNode {
 }
 ```
 
-### Preview image
+### 效果图：
 
-Menu:
+菜单：
 
 <img src="../readme/自定义节点菜单.png" width="250px">
 
-Node:
+节点：
 
 <img src="../readme/自定义节点.png" width="250px">
 
 ---
 
-### Known issues
+### 已知问题
 
-- Boolean variables are not currently supported
+- Boolean 变量目前暂不支持
