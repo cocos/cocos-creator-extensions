@@ -1,8 +1,18 @@
 # Shader Graph
 
-## Introduction
+## Background
 
-The plugin supports a visual editor for shaders.
+In order to lower the threshold for Shader development and expand the capabilities of procedural generation, and to encourage artists/technical artists to directly produce materials in Cocos Creator instead of third-party Digital Content Creation (DCC) tools, avoiding additional development work when importing materials, we have introduced a node-based material editor specifically designed for Cocos Creator.
+
+This plugin relies on Cocos Creator version 3.8.2 and is developed based on our in-house open-source [Graph component](https://github.com/itharbors/ui/tree/main/element/graph) from the Web UI library.
+
+To promote collaboration and innovation within the developer community, we have open-sourced the full set of source code for this plugin under the MIT license. This means developers are free to use, modify, and distribute this tool. We hope this project inspires more creativity within the community, and encourage everyone to contribute to the improvement of this tool by submitting pull requests.
+
+---
+
+GitHub：[shader-graph](https://github.com/knoxHuang/cocos-creator-extensions/tree/main/extensions/shader-graph)
+
+---
 
 <img src="readme/效果图.png" width="800px">
 
@@ -129,4 +139,11 @@ npm run pack - Package into a zip file
 
 - Preview panel does not support dynamic preview
 
+### Development team
+
+- Devs: Knox、Youyou
+- Framework：VisualSJ
+- PM：AndyTian
+- UI/UX：派大星
+- Director：Jare
 
