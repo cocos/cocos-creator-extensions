@@ -1,4 +1,4 @@
-# Cocos Creator Public Extension Plugin Library
+# Cocos Creator Public Extensions
 
 [中文](./README.zh-CN.MD)
 
@@ -53,3 +53,7 @@ Specify **--extension="PluginName"** or **--ext="PluginName"** after each specif
 
 1. After modifying a plugin, use npm run pack to package it into a zip file.
 2. In the Cocos Creator editor, open the panel by clicking on Extensions/Extension Manager in the main menu. Click to import the zip plugin.
+
+## License
+
+This project is released under the MIT License, which typically allows you to freely modify and distribute the project, and use derivative works for commercial purposes. However, please note that whenever you distribute this project or any form of derivative works that include this project, you must also include and fully display [this license](/LICENSE.txt).
