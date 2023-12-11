@@ -1,7 +1,7 @@
 import { join } from 'path';
 import { existsSync, readFileSync } from 'fs-extra';
 
-import type { AssetInfo } from '@editor/library-type/packages/asset-db/@types/public';
+import type { AssetInfo } from '@cocos/creator-types/editor/packages/asset-db/@types/public';
 
 import { MaskType } from './internal';
 

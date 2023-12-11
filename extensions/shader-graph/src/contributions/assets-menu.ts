@@ -1,4 +1,4 @@
-import { MenuAssetInfo } from '@editor/library-type/packages/package-asset/@types/public';
+import { MenuAssetInfo } from '@cocos/creator-types/editor/packages/package-asset/@types/public';
 import { PACKAGE_NAME, DEFAULT_ASSET_NAME, GraphDataMgr, getName } from '../shader-graph';
 
 function getMenu(assetInfo: MenuAssetInfo) {

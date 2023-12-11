@@ -1,6 +1,5 @@
 import { basename, extname, resolve } from 'path';
-import { AssetDB, forEach } from '@editor/asset-db';
-import { IAsset } from '@editor/library-type/packages/asset-db/@types/protected/asset';
+import { AssetDB, forEach, Asset } from '@editor/asset-db';
 
 // @ts-ignore
 import { CCON } from 'cc/editor/serialization';
@@ -26,7 +25,7 @@ async function loadTexture(assetId: string): Promise<any | null> {
  * @param asset 资源数据
  * @param code
  */
-export async function generateEffectAsset(asset: IAsset, code: string){
+export async function generateEffectAsset(asset: Asset, code: string){
     const name = basename(asset.source, extname(asset.source));
 
     const effect = await buildEffect(name, code);

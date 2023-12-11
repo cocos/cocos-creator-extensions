@@ -15,7 +15,7 @@ import {
     GraphConfigMgr,
     PANEL_NAME,
 } from '../../shader-graph';
-import { AssetInfo } from '@editor/library-type/packages/asset-db/@types/public';
+import { AssetInfo } from '@cocos/creator-types/editor/packages/asset-db/@types/public';
 import { MaskType, declareGraphBlock } from '../../shader-graph';
 
 let vm: any = null;

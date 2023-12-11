@@ -9,7 +9,7 @@ import { getBlockDataByType, getBlockTemplateByType } from '../declare';
 import { generateUUID, HTMLGraphForgeElement } from '../../block-forge';
 
 import { BaseMgr, MessageMgr, MessageType, MaskMgr, GraphConfigMgr, IGraphConfig } from './index';
-import { AssetInfo } from '@editor/library-type/packages/asset-db/@types/public';
+import { AssetInfo } from '@cocos/creator-types/editor/packages/asset-db/@types/public';
 import { getName } from '../utils';
 
 /**

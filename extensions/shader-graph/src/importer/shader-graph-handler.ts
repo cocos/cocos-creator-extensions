@@ -1,13 +1,10 @@
-import { gte } from 'semver';
-import { basename, extname } from 'path';
 import { writeFileSync } from 'fs-extra';
-import { AssetHandler, CreateAssetOptions } from '@editor/library-type/packages/asset-db/@types/protected';
 import { Asset } from '@editor/asset-db';
 
 import shaderGraph from './shader-graph';
 import { PACKAGE_NAME, GraphDataMgr, getName } from '../shader-graph';
 
-const ShaderGraphHandler: AssetHandler = {
+const ShaderGraphHandler = {
 
     name: shaderGraph.name,
 
@@ -44,7 +41,7 @@ const ShaderGraphHandler: AssetHandler = {
                 },
             ];
         },
-        async create(options: CreateAssetOptions): Promise<string | null> {
+        async create(options: { target: string, template: string }): Promise<string | null> {
             try {
                 let shaderGraph = '';
                 const name = getName(options.target);
@@ -64,7 +61,7 @@ const ShaderGraphHandler: AssetHandler = {
         },
     },
 
-    async open(asset): Promise<boolean> {
+    async open(asset: Asset): Promise<boolean> {
         Editor.Message.send('shader-graph', 'open', asset.uuid);
         return true;
     },
