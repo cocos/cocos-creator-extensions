@@ -1,10 +1,10 @@
 <div id="shader-graph" ref="shaderGraphRef">
     <ui-graph-forge id="ui-graph-forge" ref="forgeRef">
         <div ref="dirtyRef" hidden>
-            <ui-button tooltip="i18n:creator-graph.buttons.save" class="save tiny green" @click="onSave">
+            <ui-button tooltip="i18n:shader-graph.buttons.save" class="save tiny green" @click="onSave">
                 <ui-icon value="check"></ui-icon>
             </ui-button>
-            <ui-button tooltip="i18n:creator-graph.buttons.reset" class="reset tiny" @click="onReset">
+            <ui-button tooltip="i18n:shader-graph.buttons.reset" class="reset tiny" @click="onReset">
                 <ui-icon value="reset" color=""></ui-icon>
             </ui-button>
         </div>
@@ -38,13 +38,13 @@
     <div class="mask" ref="maskRef" v-show="displayMaskType !== MaskType.None">
         <div class="mask-child">
             <div class="asset-missing" v-if="displayMaskType === MaskType.AssetMissing">
-                <ui-label :value="`i18n:creator-graph.messages.missing_assets.mask_tips`"></ui-label>
+                <ui-label :value="`i18n:shader-graph.messages.missing_assets.mask_tips`"></ui-label>
                 <div class="button-group-vertical">
                     <div class="button" @click="onOpen()">
-                        <ui-label :value="`i18n:creator-graph.buttons.open`"></ui-label>
+                        <ui-label :value="`i18n:shader-graph.buttons.open`"></ui-label>
                     </div>
                     <div class="button" @click="onSaveAs()">
-                        <ui-label :value="`i18n:creator-graph.buttons.save_as`"></ui-label>
+                        <ui-label :value="`i18n:shader-graph.buttons.save_as`"></ui-label>
                     </div>
                     <div v-for="(item, index) in createNewList" :key="index" class="button" @click="onCreateNew(item.type)">
                         <ui-label :value="item.label"></ui-label>
@@ -53,17 +53,17 @@
             </div>
             <ui-label
                 v-if="displayMaskType === MaskType.WaitSceneReady"
-                :value="`i18n:creator-graph.messages.scene_ready.mask_tips`"
+                :value="`i18n:shader-graph.messages.scene_ready.mask_tips`"
             ></ui-label>
             <ui-label
                 v-if="displayMaskType === MaskType.WaitLoad"
-                :value="`i18n:creator-graph.messages.wait_load.mask_tips`"
+                :value="`i18n:shader-graph.messages.wait_load.mask_tips`"
             ></ui-label>
             <div class="need-create-new-asset" v-if="displayMaskType === MaskType.NeedCreateNewAsset">
-                <ui-label :value="`i18n:creator-graph.messages.need_create_new_asset.mask_tips`"></ui-label>
+                <ui-label :value="`i18n:shader-graph.messages.need_create_new_asset.mask_tips`"></ui-label>
                 <div class="button-group-vertical">
                     <div class="button" @click="onOpen()">
-                        <ui-label :value="`i18n:creator-graph.buttons.open`"></ui-label>
+                        <ui-label :value="`i18n:shader-graph.buttons.open`"></ui-label>
                     </div>
                     <div v-for="(item, index) in createNewList" :key="index" class="button" @click="onCreateNew(item.type)">
                         <ui-label :value="item.label"></ui-label>
@@ -71,21 +71,21 @@
                 </div>
             </div>
             <div class="asset-change" v-if="displayMaskType === MaskType.AssetChange">
-                <ui-label :value="`i18n:creator-graph.messages.assets_change.mask_tips`"></ui-label>
+                <ui-label :value="`i18n:shader-graph.messages.assets_change.mask_tips`"></ui-label>
                 <div class="button-group-vertical">
                     <div class="button" @click="onReload()">
-                        <ui-label :value="`i18n:creator-graph.buttons.load`"></ui-label>
+                        <ui-label :value="`i18n:shader-graph.buttons.load`"></ui-label>
                     </div>
                     <div class="button" @click="onOverride()">
-                        <ui-label :value="`i18n:creator-graph.buttons.override`"></ui-label>
+                        <ui-label :value="`i18n:shader-graph.buttons.override`"></ui-label>
                     </div>
                 </div>
             </div>
             <div class="asset-change" v-if="displayMaskType === MaskType.NeedSaveBeReloadByRename">
-                <ui-label :value="`i18n:creator-graph.messages.save_and_reload_by_rename.mask_tips`"></ui-label>
+                <ui-label :value="`i18n:shader-graph.messages.save_and_reload_by_rename.mask_tips`"></ui-label>
                 <div class="button-group-horizontal">
                     <div class="button" @click="onSaveAndReloadByRename()">
-                        <ui-label :value="`i18n:creator-graph.buttons.ok`"></ui-label>
+                        <ui-label :value="`i18n:shader-graph.buttons.ok`"></ui-label>
                     </div>
                 </div>
             </div>
