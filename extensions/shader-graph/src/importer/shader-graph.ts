@@ -1,7 +1,10 @@
 import { join } from 'path';
 import { load } from 'js-yaml';
 import { ensureDirSync, readFile, writeFile, existsSync } from 'fs-extra';
-import { Asset } from '@editor/asset-db';
+
+module.paths.push(join(Editor.App.path, 'node_modules'));
+
+const { Asset } = require('@editor/asset-db');
 
 import { Block, Forge } from '../block-forge';
 import { GraphData } from '../block-forge/interface';
@@ -235,6 +238,7 @@ export class ShaderGraph {
         return masterNode.generateCode();
     }
 
+    // @ts-expect-error
     public async generateEffectByAsset(asset: Asset) {
         const serializeYAML = await readFile(asset.source, 'utf8');
 
@@ -247,6 +251,7 @@ export class ShaderGraph {
         return code;
     }
 
+    // @ts-expect-error
     public existsCacheEffect(asset: Asset) {
         return existsSync(this.getTempEffectCodePath(asset));
     }
@@ -254,6 +259,7 @@ export class ShaderGraph {
     /**
      * 获取存储 effect code 文件夹
      */
+    // @ts-expect-error
     public getTempEffectCodePath(asset: Asset): string {
         return join(this.tempEffectCodeDir, `${asset.uuid}.effect`);
     }
@@ -271,6 +277,7 @@ export class ShaderGraph {
      * 后续的一系列操作都不会执行
      * @param asset
      */
+    // @ts-expect-error
     public async import(asset: Asset) {
         await generateEffectAsset(asset, await this.generateEffectByAsset(asset));
         return true;

@@ -1,4 +1,8 @@
-import { Asset, Importer } from '@editor/asset-db';
+
+import { join } from 'path';
+module.paths.push(join(Editor.App.path, 'node_modules'));
+
+const { Asset, Importer } = require('@editor/asset-db');
 
 import shaderGraph from './shader-graph';
 import { generateEffectAsset } from './utils-3.8';
@@ -28,6 +32,7 @@ export class ShaderGraph380 extends Importer {
      * 后续的一系列操作都不会执行
      * @param asset
      */
+    // @ts-expect-error
     public async import(asset: Asset) {
         try {
             await generateEffectAsset(asset, await shaderGraph.generateEffectByAsset(asset));

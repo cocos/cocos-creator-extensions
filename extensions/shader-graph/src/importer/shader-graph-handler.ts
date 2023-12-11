@@ -1,8 +1,12 @@
 import { writeFileSync } from 'fs-extra';
-import { Asset } from '@editor/asset-db';
+import { join } from 'path';
 
 import shaderGraph from './shader-graph';
 import { PACKAGE_NAME, GraphDataMgr, getName } from '../shader-graph';
+
+module.paths.push(join(Editor.App.path, 'node_modules'));
+
+const { Asset } = require('@editor/asset-db');
 
 const ShaderGraphHandler = {
 
@@ -61,6 +65,7 @@ const ShaderGraphHandler = {
         },
     },
 
+    // @ts-expect-error
     async open(asset: Asset): Promise<boolean> {
         Editor.Message.send('shader-graph', 'open', asset.uuid);
         return true;
@@ -71,7 +76,7 @@ const ShaderGraphHandler = {
 
         migrations: [],
 
-        // @ts-ignore
+        // @ts-expect-error
         async before(asset: Asset) {
             if (!shaderGraph.existsCacheEffect(asset)) {
                 await shaderGraph.generateEffectByAsset(asset);
@@ -82,6 +87,7 @@ const ShaderGraphHandler = {
             return true;
         },
 
+        // @ts-expect-error
         async after(asset: Asset) {
             const source = shaderGraph.cacheSourceMap.get(asset.uuid);
             if (source) {

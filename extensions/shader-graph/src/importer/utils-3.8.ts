@@ -1,5 +1,8 @@
-import { basename, extname, resolve } from 'path';
-import { AssetDB, forEach, Asset } from '@editor/asset-db';
+import { basename, extname, join, resolve } from 'path';
+
+module.paths.push(join(Editor.App.path, 'node_modules'));
+
+const { AssetDB, forEach, Asset } = require('@editor/asset-db');
 
 // @ts-ignore
 import { CCON } from 'cc/editor/serialization';
@@ -25,12 +28,14 @@ async function loadTexture(assetId: string): Promise<any | null> {
  * @param asset 资源数据
  * @param code
  */
+// @ts-expect-error
 export async function generateEffectAsset(asset: Asset, code: string){
     const name = basename(asset.source, extname(asset.source));
 
     const effect = await buildEffect(name, code);
 
     // 记录 effect 的头文件依赖
+    // @ts-expect-error
     forEach((db: AssetDB) => {
         for (const header of effect.dependencies) {
             asset.depend(resolve(db.options.target, 'chunks', header + '.chunk'));
