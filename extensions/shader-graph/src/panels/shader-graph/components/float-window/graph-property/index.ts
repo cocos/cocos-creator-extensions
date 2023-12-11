@@ -1,6 +1,6 @@
 import { merge, debounce } from 'lodash';
 
-import type { IProperty } from '@editor/library-type/packages/scene/@types/public';
+import type { IProperty } from '@cocos/creator-types/editor/packages/scene/@types/public';
 import type { PropertyDefine } from '../../../../../../@types/shader-node-type';
 
 import { FloatWindowConfig, FloatWindowDragTarget } from '../internal';
