@@ -137,7 +137,9 @@ npm run pack - Package into a zip file
 ```
 ### Known issues
 
-- Preview panel does not support dynamic preview
+- Dynamic preview is not supported in the preview panel.
+- Setting for nodes of type Texture2D is ineffective. You need to add a Texture2D type variable, connect it to the texture2D property, and finally set the effect in the Material.
+  
 
 ### Development team
 
