@@ -10,7 +10,7 @@
         "build": "npm run build-less && tsc",
         "watch": "tsc -w",
         "build-less": "lessc ./static/shader-graph/style.less > ./static/shader-graph/style.css",
-        "pack": "npx ts-node ./build/pack.ts",
+        "pack": "npx ts-node ./lib/pack.ts",
         "test": "node --test ./tests"
     },
     "dependencies": {
