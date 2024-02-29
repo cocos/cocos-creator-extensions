@@ -1,6 +1,6 @@
 {
     "package_version": 2,
-    "version": "1.0.2",
+    "version": "1.0.3",
     "name": "localization-editor",
     "description": "i18n:localization-editor.description",
     "main": "./webpack-dist/electron-main/main.js",
