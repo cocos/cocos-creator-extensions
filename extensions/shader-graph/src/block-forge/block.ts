@@ -400,6 +400,10 @@ export function removeDeclareBlock(type: string) {
 // @ts-ignore
 window.removeDeclareBlock = removeDeclareBlock;
 
+export function removeAllDeclareBlock() {
+    blockMap.clear();
+}
+
 /**
  * 注册一个 block 类型
  * @param block

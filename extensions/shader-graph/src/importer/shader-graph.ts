@@ -51,6 +51,11 @@ export class ShaderGraph {
     public cacheSourceMap: Map<string, string> = new Map();
 
     _initedGraph = false;
+
+    reset() {
+        this._initedGraph = false;
+    }
+
     async initGraph() {
         if (this._initedGraph && this.shaderContext?.shaderTemplatesDir) {
             return;

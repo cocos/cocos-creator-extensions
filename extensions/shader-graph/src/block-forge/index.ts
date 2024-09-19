@@ -18,6 +18,7 @@ export {
     hasDeclareBlock,
     getDeclareBlock,
     removeDeclareBlock,
+    removeAllDeclareBlock,
 } from './block';
 
 export {

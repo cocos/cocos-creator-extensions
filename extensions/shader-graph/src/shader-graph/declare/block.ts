@@ -2,7 +2,7 @@ import type { BlockTemplateData } from '../internal';
 import type { BlockData, IBlockDescription, IPinDescription, PinData } from '../../block-forge/interface';
 import type { PropertyDefine, NodeDefine, SlotDefine } from '../../../@types/shader-node-type';
 
-import { declareBlock, declareEnum, declareDynamicEnumToType } from '../../block-forge';
+import { declareBlock, declareEnum, declareDynamicEnumToType, removeAllDeclareBlock } from '../../block-forge';
 import { generatePinID } from '../utils';
 
 type SlotTag = 'input' | 'out' | 'prop';
@@ -171,6 +171,7 @@ export function declareShaderNodeBlock(shaderNodeMap: Map<string, NodeDefine>) {
     // 清空缓存
     normalBlockCacheMap.clear();
     pinMap.clear();
+    removeAllDeclareBlock();
     for (const [blockType, item] of shaderNodeMap) {
         const inputPins: PinData[] = [];
         const inputPinDescriptions: IPinDescription[] = [];
