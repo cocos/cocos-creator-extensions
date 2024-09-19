@@ -25,6 +25,13 @@ function createSlot(slot: SlotDefine) {
 }
 
 exports.methods = {
+    /**
+     * 注册后需要让场景进程同步一下节点数据
+     */
+    afterDeclared() {
+        shaderGraph.reset();
+    },
+
     async queryShaderNode() {
         const { shaderNodeMap, shaderPropertyMap } = await Editor.Module.importProjectModule('db://shader-graph/graph/index.ts') as IModuleOptions;
 

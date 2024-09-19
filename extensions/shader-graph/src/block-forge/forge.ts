@@ -353,6 +353,7 @@ export class HTMLGraphForgeElement extends HTMLElement {
 
         const $svg = $graph.shadowRoot.querySelector('#lines')!;
         function searchG(htmlArray: (HTMLElement | SVGGElement)[]) {
+            if (!htmlArray) return;
             const length = Math.min(htmlArray.length, 4);
             for (let i = 0; i < length; i++) {
                 const $elem = htmlArray[i];

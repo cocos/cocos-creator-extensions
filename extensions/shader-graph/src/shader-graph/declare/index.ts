@@ -28,6 +28,7 @@ async function declareGraphBlock() {
     applyBlockToMenu();
 
     MessageMgr.Instance.send(MessageType.Declared);
+    MessageMgr.Instance.callSceneMethod('afterDeclared');
 }
 
 function iteratePropertyDefines(handle: (define: PropertyDefine) => void) {
