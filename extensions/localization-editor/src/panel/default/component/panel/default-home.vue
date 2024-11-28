@@ -508,7 +508,6 @@
 </template>
 
 <script lang="ts">
-import electron from 'electron';
 import { existsSync } from 'fs';
 import { dirname, extname, join, relative } from 'path';
 import { computed, onMounted, onUnmounted, Ref, ref } from 'vue';
@@ -982,9 +981,9 @@ export default {
         function onLinkClick(where: 'i18n' | 'collection') {
             const language = Editor.I18n.getLanguage() === 'zh' ? 'zh' : 'en';
             if (where === 'i18n'){
-                electron.shell.openExternal(`https://docs.cocos.com/creator/manual/${language}/editor/l10n/overview.html`);
+                remote.shell.openExternal(`https://docs.cocos.com/creator/manual/${language}/editor/l10n/overview.html`);
             } else {
-                electron.shell.openExternal(`https://docs.cocos.com/creator/manual/${language}/editor/l10n/collect-and-count.html`);
+                remote.shell.openExternal(`https://docs.cocos.com/creator/manual/${language}/editor/l10n/collect-and-count.html`);
             }
         }
 
