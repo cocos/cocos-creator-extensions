@@ -1,7 +1,7 @@
 <template>
     <div class="mask">
         <div>
-            <ui-label i18n :value="`${PKGName}.home.turn_on_tip`"></ui-label>
+            <ui-label :value="`${PKGName}.home.turn_on_tip`"></ui-label>
             <ui-button @confirm="onButtonClick()">
                 <ui-label
                     color
