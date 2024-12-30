@@ -256,11 +256,6 @@ export class ShaderGraph {
         return code;
     }
 
-    // @ts-expect-error
-    public existsCacheEffect(asset: Asset) {
-        return existsSync(this.getTempEffectCodePath(asset));
-    }
-
     /**
      * 获取存储 effect code 文件夹
      */

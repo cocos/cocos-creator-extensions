@@ -78,9 +78,7 @@ const ShaderGraphHandler = {
 
         // @ts-expect-error
         async before(asset: Asset) {
-            if (!shaderGraph.existsCacheEffect(asset)) {
-                await shaderGraph.generateEffectByAsset(asset);
-            }
+            await shaderGraph.generateEffectByAsset(asset);
             shaderGraph.cacheSourceMap.set(asset.uuid, asset._source);
             // @ts-ignore
             asset._source = shaderGraph.getTempEffectCodePath(asset);
