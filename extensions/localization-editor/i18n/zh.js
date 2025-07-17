@@ -934,7 +934,7 @@ module.exports = {
         'zh-Hans-MO': '简体中文（中国澳门特别行政区）',
         'zh-Hans-SG': '简体中文（新加坡）',
         'zh-Hans': '简体中文',
-        'zh-Hant-TW': '繁体中文（台湾）',
+        'zh-Hant-TW': '繁体中文（中国台湾）',
         'zh-Hant-MO': '繁体中文（中国澳门特别行政区）',
         'zh-Hant-HK': '繁体中文（中国香港特别行政区）',
         'zh-Hant': '繁体中文',

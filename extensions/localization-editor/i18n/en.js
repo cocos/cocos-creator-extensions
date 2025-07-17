@@ -934,7 +934,7 @@ module.exports = {
         'zh-Hans-MO': 'Simplified Chinese (Macao SAR China)',
         'zh-Hans-SG': 'Simplified Chinese (Singapore)',
         'zh-Hans': 'Simplified Chinese',
-        'zh-Hant-TW': 'Traditional Chinese (Taiwan)',
+        'zh-Hant-TW': 'Traditional Chinese (Taiwan SAR China)',
         'zh-Hant-MO': 'Traditional Chinese (Macao SAR China)',
         'zh-Hant-HK': 'Traditional Chinese (Hong Kong SAR China)',
         'zh-Hant': 'Traditional Chinese',
